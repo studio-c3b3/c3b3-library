@@ -1,11 +1,12 @@
-# Jeu De Pirate 
+# Jeu De Pirate
 
 Ceci est le git principal du project
 
 
 
-> **En cas de problËme avec le git contactez-moi** 
+> **En cas de probl√®me avec le git contactez-moi**
 *Faustin*
 
 [Lien Du Discord](https://discord.gg/DHcFFMQ)
 
+Format d'image : 128x128
