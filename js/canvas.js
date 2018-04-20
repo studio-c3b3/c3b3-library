@@ -39,4 +39,8 @@ function update() {
   moveEntity(ball);
   moveEntity(enemy);
 }
+
+
+
+
 setInterval(update, 10);
