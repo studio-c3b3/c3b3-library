@@ -27,7 +27,7 @@ Dans un premier temps :
 - On va créer une librairie de fonction générique. Toutes nos fonctions vont donc être en FRANCAIS. La je créé une première librarie simple pour dessiner en 2D.
 - Tous nos fichiers js seront pour l'instant en vrac dans le dossier js
 - Essayez de commenter au maximum
--
+- FAIRE DES COMMITS AVEC UN MAXIMUM D4INFORMATION POUR EVITER QU4ON DEPOUILLE TOUTE VOS MODIFICATIONS !!!!!
 
 Dans un second temps nous refactorisons le tout et mettrons tout dans d'autres structures :
 - Player.js, boat.js, ennemy.js, map.js etc...
