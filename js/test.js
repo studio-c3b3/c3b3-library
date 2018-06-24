@@ -39,4 +39,7 @@ function update() {
   draw();
   //console.log("Salut 4 " + frameCount + taille);
 }
+function log() {
+  console.log("Salut")
+}
 setInterval(update, 10);
