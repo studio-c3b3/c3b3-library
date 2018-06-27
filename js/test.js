@@ -7,7 +7,7 @@ var frameCount = 0;
 
 
 //Test pour essayer de faire une annimation
-function draw() {
+/*function draw() {
   ctx.beginPath();
   ctx.drawImage(image, taille, 0, 128, 128, 0, 0, 128, 128);
   ctx.closePath();
@@ -39,7 +39,6 @@ function update() {
   draw();
   //console.log("Salut 4 " + frameCount + taille);
 }
-function log() {
-  console.log("Salut")
-}
-setInterval(update, 10);
+
+setInterval(update, 10);*/
+registerAnimation(30, document.getElementById("source"), 128);
