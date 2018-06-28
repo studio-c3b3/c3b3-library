@@ -4,47 +4,44 @@ document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 88, 255, 0.
 var animation = []
 var frameCount = 0
 
-function registerAnimation(frameLimit,image,tailleAnimation) {
+function registerAnimation(frameLimit,image,tailleAnimation,x,y,name/*debug*/) {
+  console.log("Ajout de "+name+" avec comme taille d'animation "+tailleAnimation);
   var animationClass = {
+  name: name, //debug
   frameLimit: frameLimit,
   image: image,
   tailleAnimation : tailleAnimation,
   taille: 0,
+  x: x,
+  y: y,
   makeAnimation: function () {
     ctx.beginPath();
-    ctx.drawImage(image, taille, 0, this.tailleAnimation, this.tailleAnimation, 0, 0, this.tailleAnimation, this.tailleAnimation);
+    ctx.drawImage(this.image, this.taille, 0, this.tailleAnimation, this.tailleAnimation, this.x, this.y, this.tailleAnimation, this.tailleAnimation);
     ctx.closePath();
-    //console.log("Salut 5 " + frameCount + taille);
     if (frameCount % this.frameLimit === 0) {
-      if (taille < this.tailleAnimation) {
-        taille += this.tailleAnimation;
-        //console.log("Salut 1 " + frameCount + taille);
+      if (this.taille < this.tailleAnimation) {
+        this.taille += this.tailleAnimation;
+
       }
       else {
-          taille = 0;
-          //console.log("Salut 2 " + frameCount + taille);
+          this.taille = 0;
+
       }
     }
-
-
-
-
-
   }
 }
+
   animation.push(animationClass);
 
-
-
-
-
-
 }
+
 function draw() {
-  for (i = 0; i < animation.lenght; i++) {
+  for (var i = 0; i < animation.length; i++) {
+
     animation[i].makeAnimation();
 
 }
+
   frameCount++;
 
 }
