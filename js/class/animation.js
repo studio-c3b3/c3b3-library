@@ -1,12 +1,9 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 88, 255, 0.74)';
 var animation = []
 var frameCount = 0
 
 function registerAnimation(frameLimit,image,tailleAnimation,x,y,name/*debug*/) {
   console.log("Ajout de "+name+" avec comme taille d'animation "+tailleAnimation);
-  var animationClass = {
+  var animationC = {
   name: name, //debug
   frameLimit: frameLimit,
   image: image,
@@ -31,7 +28,7 @@ function registerAnimation(frameLimit,image,tailleAnimation,x,y,name/*debug*/) {
   }
 }
 
-  animation.push(animationClass);
+  animation.push(animationC);
 
 }
 
