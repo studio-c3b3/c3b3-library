@@ -4,12 +4,12 @@ document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 88, 255, 0.
 var animation = []
 var frameCount = 0
 
-function registerAnimation(frameLimit,image,tailleAnimation,id/*debug*/) {
+function registerAnimation(frameLimit,tailleAnimation,id/*debug*/) {
   console.log("Ajout de "+id+" avec comme taille d'animation "+tailleAnimation);
   var animationC = {
-  name: name, //debug
+  id: id, //debug
   frameLimit: frameLimit,
-  image: image,
+  image: entity[id].image,
   tailleAnimation : tailleAnimation,
   taille: 0,
   //x: x,

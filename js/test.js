@@ -8,7 +8,7 @@ var WIDTH = 480;
 //test sur les déplacement
 
 
-function registerEntity(id,x,y,speed,player) {
+function registerEntity(id,x,y,speed,imageA,player) {
   console.log("Ajout de "+id+" en tant que Entity");
   if (player) {
     var entityC = {
@@ -21,7 +21,10 @@ function registerEntity(id,x,y,speed,player) {
       pressingDown:false,
       pressingUp:false,
       pressingLeft:false,
-      pressingRight:false
+      pressingRight:false,
+      image:imageA,
+      width:imageA.clientWidth,
+      height:imageA.clientHeight
     }
   }
   else {
@@ -31,7 +34,10 @@ function registerEntity(id,x,y,speed,player) {
       y:y,
       speed:speed,
       animation: {},
-      player: false
+      player: false,
+      image:imageA,
+      width:imageA.clientWidth,
+      height:imageA.clientHeight
     }
   }
   entity[id] = entityC;
@@ -88,8 +94,8 @@ function update() {
 }
 setInterval(update, 10);
 
-registerEntity(0, 0, 0, 10, true);
-registerEntity(1, 128, 0, 30, false)
+registerEntity(0, 0, 0, 10, document.getElementById("source"), true);
+registerEntity(1, 128, 0, 30, document.getElementById("source1"), false)
 
-registerAnimation(30, document.getElementById("source"), 128, 0);
-registerAnimation(15, document.getElementById("source1"), 26, 1);
+registerAnimation(30, 128, 0);
+registerAnimation(15, 26, 1);
