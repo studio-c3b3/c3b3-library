@@ -2,13 +2,13 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 88, 255, 0.74)';
 var entity = [];
-var HEIGHT = 320;
-var WIDTH = 480;
+var HEIGHT = 320; // = y
+var WIDTH = 480; // = x = largeur
 
 //test sur les déplacement
 
 
-function registerEntity(id,x,y,speed,imageA,player) {
+function registerEntity(id,x,y,speed,imageA,width,height,player) {
   console.log("Ajout de "+id+" en tant que Entity");
   if (player) {
     var entityC = {
@@ -23,8 +23,8 @@ function registerEntity(id,x,y,speed,imageA,player) {
       pressingLeft:false,
       pressingRight:false,
       image:imageA,
-      width:imageA.clientWidth,
-      height:imageA.clientHeight
+      width:width,
+      height:height
     }
   }
   else {
@@ -37,7 +37,7 @@ function registerEntity(id,x,y,speed,imageA,player) {
       player: false,
       image:imageA,
       width:imageA.clientWidth,
-      height:imageA.clientHeight
+      height:imageA.clientHeight,
     }
   }
   entity[id] = entityC;
@@ -67,23 +67,27 @@ document.onkeyup = function(event){
 
 updatePlayerPosition = function(){
         if(entity[0].pressingRight)
-                entity[0].x += 10;
+                entity[0].x += entity[0].speed;
         if(entity[0].pressingLeft)
-                entity[0].x -= 10;
+                entity[0].x -= entity[0].speed;
         if(entity[0].pressingDown)
-                entity[0].y += 10;
+                entity[0].y += entity[0].speed;
         if(entity[0].pressingUp)
-                entity[0].y -= 10;
+                entity[0].y -= entity[0].speed;
 
         //ispositionvalid
-        if(entity[0].x < entity[0].width/2)
-                entity[0].x = entity[0].width/2;
-        if(entity[0].x > WIDTH-entity[0].width/2)
-                entity[0].x = WIDTH - entity[0].width/2;
-        if(entity[0].y < entity[0].height/2)
-                entity[0].y = entity[0].height/2;
-        if(entity[0].y > HEIGHT - entity[0].height/2)
-                entity[0].y = HEIGHT - entity[0].height/2;
+        if(entity[0].x < 0) {
+                entity[0].x = 0;
+              }
+        if(entity[0].x > WIDTH - entity[0].width){
+                entity[0].x = WIDTH - entity[0].width;
+              }
+        if(entity[0].y < 0){
+                entity[0].y = 0;
+              }
+        if(entity[0].y > HEIGHT - entity[0].height){
+                entity[0].y = HEIGHT - entity[0].height;
+              }
 
 
 }
@@ -92,10 +96,12 @@ function update() {
   updatePlayerPosition();
   draw();
 }
-setInterval(update, 10);
 
-registerEntity(0, 0, 0, 10, document.getElementById("source"), true);
-registerEntity(1, 128, 0, 30, document.getElementById("source1"), false)
+
+registerEntity(0, 0, 0, 10, document.getElementById("source"), 128, 128, true);
+registerEntity(1, 0, 0, 30, document.getElementById("source1"), 26, 26, false);
 
 registerAnimation(30, 128, 0);
 registerAnimation(15, 26, 1);
+
+setInterval(update, 10);
