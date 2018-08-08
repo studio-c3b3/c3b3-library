@@ -4,6 +4,15 @@ document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 88, 255, 0.
 
 var frameCount = 0;
 
-//Ne marche plus
-registerAnimation(15, document.getElementById("source1"), 26, 256, 256,"goblin");
-registerAnimation(30, document.getElementById("source"), 128,0,0,"bateau");
+// registerEntity(id , x, y, speed, image, tailleX, tailleY, player);
+registerEntity(0, 0, 0, 30, document.getElementById("source1"), 26, 26, false);
+
+// registerAnimation(frameLimit, tailleAnimation, id);
+registerAnimation(15, 26, 0);
+
+function update() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawImage();
+}
+
+setInterval(update, 10);
