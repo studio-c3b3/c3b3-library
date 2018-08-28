@@ -2,48 +2,48 @@
 
 document.onkeydown = function(event){
         if(event.keyCode === 68)        //d
-                entity[0].pressingRight = true;
+                entity[gameProperty.player].pressingRight = true;
         else if(event.keyCode === 83)   //s
-                entity[0].pressingDown = true;
+                entity[gameProperty.player].pressingDown = true;
         else if(event.keyCode === 81) //q
-                entity[0].pressingLeft = true;
+                entity[gameProperty.player].pressingLeft = true;
         else if(event.keyCode === 90) // z
-                entity[0].pressingUp = true;
+                entity[gameProperty.player].pressingUp = true;
 }
 
 document.onkeyup = function(event){
         if(event.keyCode === 68)        //z
-                entity[0].pressingRight = false;
+                entity[gameProperty.player].pressingRight = false;
         else if(event.keyCode === 83)   //s
-                entity[0].pressingDown = false;
+                entity[gameProperty.player].pressingDown = false;
         else if(event.keyCode === 81) //q
-                entity[0].pressingLeft = false;
+                entity[gameProperty.player].pressingLeft = false;
         else if(event.keyCode === 90) // z
-                entity[0].pressingUp = false;
+                entity[gameProperty.player].pressingUp = false;
 }
 
 updatePlayerPosition = function(){
-        if(entity[0].pressingRight)
-                entity[0].x += entity[0].speed;
-        if(entity[0].pressingLeft)
-                entity[0].x -= entity[0].speed;
-        if(entity[0].pressingDown)
-                entity[0].y += entity[0].speed;
-        if(entity[0].pressingUp)
-                entity[0].y -= entity[0].speed;
+        if(entity[gameProperty.player].pressingRight)
+                entity[gameProperty.player].x += entity[gameProperty.player].speed;
+        if(entity[gameProperty.player].pressingLeft)
+                entity[gameProperty.player].x -= entity[gameProperty.player].speed;
+        if(entity[gameProperty.player].pressingDown)
+                entity[gameProperty.player].y += entity[gameProperty.player].speed;
+        if(entity[gameProperty.player].pressingUp)
+                entity[gameProperty.player].y -= entity[gameProperty.player].speed;
 
         //ispositionvalid
-        if(entity[0].x < 0) {
-                entity[0].x = 0;
+        if(entity[gameProperty.player].x < 0) {
+                entity[gameProperty.player].x = 0;
               }
-        if(entity[0].x > WIDTH - entity[0].width){
-                entity[0].x = WIDTH - entity[0].width;
+        if(entity[gameProperty.player].x > WIDTH - entity[gameProperty.player].width){
+                entity[gameProperty.player].x = WIDTH - entity[gameProperty.player].width;
               }
-        if(entity[0].y < 0){
-                entity[0].y = 0;
+        if(entity[gameProperty.player].y < 0){
+                entity[gameProperty.player].y = 0;
               }
-        if(entity[0].y > HEIGHT - entity[0].height){
-                entity[0].y = HEIGHT - entity[0].height;
+        if(entity[gameProperty.player].y > HEIGHT - entity[gameProperty.player].height){
+                entity[gameProperty.player].y = HEIGHT - entity[gameProperty.player].height;
               }
 
 

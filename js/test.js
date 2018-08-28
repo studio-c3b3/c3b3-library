@@ -5,12 +5,13 @@ var entity = [];
 var image = [];
 var HEIGHT = 320; // = y
 var WIDTH = 480; // = x = largeur
+var gameProperty = {};
 
 //test sur les collision
 
 function getDistanceBetweenEntity(entity1,entity2){     //return distance (number)
-        var vx = gameMath.middleXY(0, "x") - gameMath.middleXY(1, "x");
-        var vy = gameMath.middleXY(0, "y") - gameMath.middleXY(1, "y");
+        var vx = gameMath.middleXY(entity1, "x") - gameMath.middleXY(entity2, "x");
+        var vy = gameMath.middleXY(entity1, "y") - gameMath.middleXY(entity2, "y");
         return Math.sqrt(vx*vx+vy*vy);
 }
 
@@ -23,12 +24,17 @@ function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   updatePlayerPosition();
   drawImage();
-  var isColliding = testCollisionEntity(entity[0],entity[1]);
-  if(isColliding){
-      console.log('Colliding!');
 
+  for(var key in entity) {
+    var isColliding = testCollisionEntity(gameProperty.id,key);
+    if(isColliding & key != gameProperty.id){
+        console.log('Colliding!');
+
+
+    }
 
   }
+
   debug.release()
 }
 

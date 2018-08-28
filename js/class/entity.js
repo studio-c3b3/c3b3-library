@@ -1,7 +1,7 @@
 var entity = [];
-function registerEntity(id,x,y,speed,imageA,width,height,player) {
+function registerEntity(id,x,y,speed,imageA,width,height,playerB) {
   console.log("Ajout de "+id+" en tant que Entity");
-  if (player) {
+  if (playerB) {
     var entityC = {
       name:name,
       x:x,
@@ -17,6 +17,7 @@ function registerEntity(id,x,y,speed,imageA,width,height,player) {
       width:width,
       height:height
     }
+    gameProperty.player = id;
   }
   else {
     var entityC = {
