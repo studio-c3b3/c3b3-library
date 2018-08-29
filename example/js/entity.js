@@ -3,8 +3,8 @@ var ctx = canvas.getContext("2d");
 document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 88, 255, 0.74)';
 var HEIGHT = 320; // = y = longeur
 var WIDTH = 480; // = x = largeur
+var image = [];
 
-//test sur les déplacement
 
 
 function update() {

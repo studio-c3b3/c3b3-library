@@ -17,7 +17,7 @@ function getDistanceBetweenEntity(entity1,entity2){     //return distance (numbe
 
 function testCollisionEntity(entity1,entity2){  //return if colliding (true/false)
         var distance = getDistanceBetweenEntity(entity1,entity2);
-        return distance < 30;
+        return distance < Math.max(gameMath.diagonaleCarre(entity[entity1].width/2),gameMath.diagonaleCarre(entity[entity2].width/2));
 }
 
 function update() {
@@ -26,23 +26,26 @@ function update() {
   drawImage();
 
   for(var key in entity) {
-    var isColliding = testCollisionEntity(gameProperty.id,key);
-    if(isColliding & key != gameProperty.id){
+    var isColliding = testCollisionEntity(gameProperty.player,key);
+    if(isColliding & key != gameProperty.player){
         console.log('Colliding!');
 
 
     }
-
   }
 
-  debug.release()
+  debug.release();
+
 }
 
 
 registerEntity(0, 0, 0, 10, document.getElementById("source"), 128, 128, true);
 registerEntity(1, 0, 0, 10, document.getElementById("source1"), 26, 26, false);
+registerEntity(2, 100, 100, 10, document.getElementById("source2"), 32, 32, false);
 
 registerAnimation(30, 128, 0);
 registerAnimation(15, 26, 1);
+
+registerStatic(2, 32);
 
 setInterval(update, 10);

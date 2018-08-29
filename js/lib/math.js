@@ -11,6 +11,9 @@ var gameMath = {
 
 
     }
+  },
+  diagonaleCarre : function(num1) {
+    return Math.sqrt(num1*num1+num1*num1);
   }
 
 }

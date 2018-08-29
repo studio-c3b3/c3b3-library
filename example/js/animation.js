@@ -1,7 +1,7 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 88, 255, 0.74)';
-
+var image = [];
 var frameCount = 0;
 
 // registerEntity(id , x, y, speed, image, tailleX, tailleY, player);

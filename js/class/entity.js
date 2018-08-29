@@ -18,6 +18,8 @@ function registerEntity(id,x,y,speed,imageA,width,height,playerB) {
       height:height
     }
     gameProperty.player = id;
+    console.log("Définition de "+id+" en tant que Joueur");
+    console.log('%c Définition de '+id+' en tant que Joueur', 'color: white; background: #66b3ff; font-weight: bold; display: block');
   }
   else {
     var entityC = {
@@ -28,8 +30,8 @@ function registerEntity(id,x,y,speed,imageA,width,height,playerB) {
       animation: {},
       player: false,
       image:imageA,
-      width:imageA.clientWidth,
-      height:imageA.clientHeight,
+      width:width,
+      height:height
     }
   }
   entity[id] = entityC;
