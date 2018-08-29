@@ -6,46 +6,58 @@ var image = [];
 var HEIGHT = 320; // = y
 var WIDTH = 480; // = x = largeur
 var gameProperty = {};
+var maps = [];
 
-//test sur les collision
+gameProperty.mapsid = 0;
 
-function getDistanceBetweenEntity(entity1,entity2){     //return distance (number)
-        var vx = gameMath.middleXY(entity1, "x") - gameMath.middleXY(entity2, "x");
-        var vy = gameMath.middleXY(entity1, "y") - gameMath.middleXY(entity2, "y");
-        return Math.sqrt(vx*vx+vy*vy);
+function createMap(id, src, tileSize) {
+  var tilesA;
+  var request = new XMLHttpRequest();
+  request.open('GET', src);
+  function finish() {
+    if (request.readyState == 4) {
+      var JsonRep = request.response;
+      tilesA = JsonRep.tile;
+      console.log(tilesA);
+    }
+  }
+  request.responseType = 'json';
+  request.onreadystatechange = finish;
+  request.send();
+  request.onload = function() {
+    var JsonRep = this.response;
+    tilesA = JsonRep.tile;
+  }
+
+
+  var MapO = {
+    id:id,
+    tailleTile: tileSize,
+    tiles: tilesA
+  }
+  maps[id] = MapO;
 }
 
-function testCollisionEntity(entity1,entity2){  //return if colliding (true/false)
-        var distance = getDistanceBetweenEntity(entity1,entity2);
-        return distance < Math.max(gameMath.diagonaleCarre(entity[entity1].width/2),gameMath.diagonaleCarre(entity[entity2].width/2));
+function updateMaps() {
+
 }
+
 
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  updateMaps();
   updatePlayerPosition();
   drawImage();
 
-  for(var key in entity) {
-    var isColliding = testCollisionEntity(gameProperty.player,key);
-    if(isColliding & key != gameProperty.player){
-        console.log('Colliding!');
 
-
-    }
-  }
 
   debug.release();
 
 }
 
-
+createMap(0, "assets/maps/map1.json", 64)
 registerEntity(0, 0, 0, 10, document.getElementById("source"), 128, 128, true);
-registerEntity(1, 0, 0, 10, document.getElementById("source1"), 26, 26, false);
-registerEntity(2, 100, 100, 10, document.getElementById("source2"), 32, 32, false);
 
 registerAnimation(30, 128, 0);
-registerAnimation(15, 26, 1);
-
-registerStatic(2, 32);
 
 setInterval(update, 10);
