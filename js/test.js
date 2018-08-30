@@ -24,10 +24,6 @@ function createMap(id, src, tileSize) {
   request.responseType = 'json';
   request.onreadystatechange = finish;
   request.send();
-  request.onload = function() {
-    var JsonRep = this.response;
-    tilesA = JsonRep.tile;
-  }
 
 
   var MapO = {
