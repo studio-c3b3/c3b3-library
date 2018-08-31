@@ -1,7 +1,7 @@
 # Jeu De Pirate
 
 Ceci est le git principal du project
-/***********************************REGLES DE CODE************************************************
+##REGLES DE CODE
 - camelCase : Ecrire les noms de variable en camelCase !
 - Indentation : 2 espaces
 - Commentaire :
@@ -14,11 +14,7 @@ Ceci est le git principal du project
 - Nom des fonctions : En français !
 - Nom des constantes : En majuscule !
 
-*************************************************************************************************/
-
-
-
-/***********************************ORGANISATION*************************************************
+##ORGANISATION
 Je met ici les instructions pour réaliser le jeu et structurer les fichiers.
 Dans un premier temps :
 
@@ -32,14 +28,11 @@ Dans un premier temps :
 Dans un second temps nous refactorisons le tout et mettrons tout dans d'autres structures :
 - Player.js, boat.js, ennemy.js, map.js etc...
 
-**************************************************************************************************/
-
-
-/***********************************TO DO*********************************************************
+##TO DO
 - Avoir idéalement les quatre côté d'un bateau (normalement avoir les 4 diagonales aussi)
 - Faire bouge rle bateau
 
-**************************************************************************************************/
+
 
 > **En cas de problème avec le git contactez-moi**
 *Faustin*

@@ -1,7 +1,7 @@
 # Jeu De Pirate 
 
-Ceci est le git principal du project
-
+##Spécification
+Queles taille pour le tileset?
 
 
 > **En cas de problème avec le git contactez-moi** 
