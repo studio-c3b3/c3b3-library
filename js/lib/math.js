@@ -14,6 +14,11 @@ var gameMath = {
   },
   diagonaleCarre : function(num1) {
     return Math.sqrt(num1*num1+num1*num1);
+  },
+  tiles : function(num1,num2) {
+      return (num1*WIDTH/maps[gameProperty.mapsid].tailleTile)+num2;
+
+
   }
 
 }
