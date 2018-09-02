@@ -25,7 +25,6 @@ function createMap(id, src, tileSize,idImage) {
     if (request.readyState == 4) {
       var JsonRep = request.response;
       tilesA = JsonRep.tile;
-      console.log(tilesA);
       var MapO = {
         tailleTile: tileSize,
         tiles: tilesA,

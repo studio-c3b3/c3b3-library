@@ -11,10 +11,9 @@ gameProperty = {};
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   updatePlayerPosition();
+  updateCollision();
   drawImage();
 }
-
-// registerEntity(id, x, y, speed, srcImage, width, height, player);
 registerEntity(0, 0, 0, 10, "../assets/img/bateauPirates.png", 128, 128, true);
 registerEntity(1, 0, 0, 30, "../assets/img/goblin.png", 26, 26, false);
 

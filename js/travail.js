@@ -1,6 +1,0 @@
-// ! CE FICHIER EST JUSTE UN FICHIER DE TRAVAIL NE PAS EXECUTER
-
-for(key in entity) {
-
-
-}

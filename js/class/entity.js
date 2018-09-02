@@ -1,5 +1,5 @@
 var entity = [];
-function registerEntity(id,x,y,speed,imageA,width,height,playerB) {
+function registerEntity(id,x,y,speed,srcImage,width,height,playerB) {
   console.log("Ajout de "+id+" en tant que Entity");
   if (playerB) {
     var entityC = {
@@ -13,10 +13,11 @@ function registerEntity(id,x,y,speed,imageA,width,height,playerB) {
       pressingUp:false,
       pressingLeft:false,
       pressingRight:false,
-      image:imageA,
+      image:new Image(),
       width:width,
       height:height
     }
+    entityC.image.src = srcImage;
     gameProperty.player = id;
     console.log("Définition de "+id+" en tant que Joueur");
     console.log('%c Définition de '+id+' en tant que Joueur', 'color: white; background: #66b3ff; font-weight: bold; display: block');
@@ -29,10 +30,11 @@ function registerEntity(id,x,y,speed,imageA,width,height,playerB) {
       speed:speed,
       animation: {},
       player: false,
-      image:imageA,
+      image:new Image(),
       width:width,
       height:height
     }
+    entityC.image.src = srcImage;
   }
   entity[id] = entityC;
 }

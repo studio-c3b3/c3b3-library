@@ -5,7 +5,7 @@ var image = [];
 var frameCount = 0;
 
 // registerEntity(id , x, y, speed, image, tailleX, tailleY, player);
-registerEntity(0, 0, 0, 30, document.getElementById("source1"), 26, 26, false);
+registerEntity(0, 0, 0, 30, "../assets/img/goblin.png", 26, 26, false);
 
 // registerAnimation(frameLimit, tailleAnimation, id);
 registerAnimation(15, 26, 0);

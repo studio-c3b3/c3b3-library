@@ -42,18 +42,34 @@ updatePlayerPosition = function(){
                   entity[gameProperty.player].y -= entity[gameProperty.player].speed;
 
           //ispositionvalid
-          if(entity[gameProperty.player].x < 0) {
-                  entity[gameProperty.player].x = 0;
-                }
-          if(entity[gameProperty.player].x > WIDTH - entity[gameProperty.player].width){
-                  entity[gameProperty.player].x = WIDTH - entity[gameProperty.player].width;
-                }
-          if(entity[gameProperty.player].y < 0){
-                  entity[gameProperty.player].y = 0;
-                }
-          if(entity[gameProperty.player].y > HEIGHT - entity[gameProperty.player].height){
-                  entity[gameProperty.player].y = HEIGHT - entity[gameProperty.player].height;
-                }
+          if(image[gameProperty.player].zoom){
+            if(entity[gameProperty.player].x < 0) {
+                    entity[gameProperty.player].x = 0;
+                  }
+            if(entity[gameProperty.player].x > WIDTH - entity[gameProperty.player].width*image[gameProperty.player].zoomNumber){
+                    entity[gameProperty.player].x = WIDTH - entity[gameProperty.player].width*image[gameProperty.player].zoomNumber;
+                  }
+            if(entity[gameProperty.player].y < 0){
+                    entity[gameProperty.player].y = 0;
+                  }
+            if(entity[gameProperty.player].y > HEIGHT - entity[gameProperty.player].height*image[gameProperty.player].zoomNumber){
+                    entity[gameProperty.player].y = HEIGHT - entity[gameProperty.player].height*image[gameProperty.player].zoomNumber;
+                  }
+          }
+          else{
+            if(entity[gameProperty.player].x < 0) {
+                    entity[gameProperty.player].x = 0;
+                  }
+            if(entity[gameProperty.player].x > WIDTH - entity[gameProperty.player].width/image[gameProperty.player].zoomNumber){
+                    entity[gameProperty.player].x = WIDTH - entity[gameProperty.player].width/image[gameProperty.player].zoomNumber;
+                  }
+            if(entity[gameProperty.player].y < 0){
+                    entity[gameProperty.player].y = 0;
+                  }
+            if(entity[gameProperty.player].y > HEIGHT - entity[gameProperty.player].height/image[gameProperty.player].zoomNumber){
+                    entity[gameProperty.player].y = HEIGHT - entity[gameProperty.player].height/image[gameProperty.player].zoomNumber;
+                  }
+          }
         }
 
 
