@@ -1,4 +1,6 @@
 {
+"tileset" : "assets/tileset/tiletest.png",
+"tileSize" : 64,
 "tile":[
 0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,

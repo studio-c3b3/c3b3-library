@@ -3,50 +3,34 @@ var ctx = canvas.getContext("2d");
 document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 88, 255, 0.74)';
 var entity = [];
 var image = [];
-var HEIGHT = 448; // = y
-var WIDTH = 640; // = x = largeur
+const HEIGHT = 448; // = y
+const WIDTH = 640; // = x = largeur
 var gameProperty = {};
 var maps = [];
 var tileset = [];
+var loading = {load : false,loading:[],loadtemp,loadDivision};
 
-gameProperty.mapsid = 0;
+
+gameProperty.mapsReader = "xy"; //xy or x
+gameProperty.mapsid = 1;
 gameProperty.player = null;
 
-function createTileset(id,src) {
-  tileset[id] = new Image();
-  tileset[id].src = src
-}
-
-function createMap(id, src, tileSize,idImage) {
-  var tilesA;
-  var request = new XMLHttpRequest();
-  request.open('GET', src);
-  function finish() {
-    if (request.readyState == 4) {
-      var JsonRep = request.response;
-      tilesA = JsonRep.tile;
-      var MapO = {
-        tailleTile: tileSize,
-        tiles: tilesA,
-        idImage:idImage
-      }
-      maps[id] = MapO;
+function createMap(id, src) {
+  //loading.loading.push(false)
+  fetch(src).then(response => response.json()).then(function(data){
+    //loading.loading.
+    var tilesetSrcR = data.tileset;
+    var tilesR = data.tile;
+    var tileSizeR = data.tileSize;
+    var MapO = {
+      tileSize: tileSizeR,
+      tiles: tilesR,
+      tileset : new Image(),
     }
-  }
-  request.responseType = 'json';
-  request.onreadystatechange = finish;
-  request.send();
-
+    MapO.tileset.src = tilesetSrcR
+    maps[id] = MapO;
+  })
 }
-
-function updateMaps() {
-    for(var y = 0; y < HEIGHT/maps[gameProperty.mapsid].tailleTile; y++){
-      for(var x = 0; x < WIDTH/maps[gameProperty.mapsid].tailleTile; x++){
-        ctx.drawImage(tileset[maps[gameProperty.mapsid].idImage], maps[gameProperty.mapsid].tailleTile*(maps[gameProperty.mapsid].tiles[gameMath.tiles(y,x)]), 0, maps[gameProperty.mapsid].tailleTile, maps[gameProperty.mapsid].tailleTile, x*maps[gameProperty.mapsid].tailleTile, y*maps[gameProperty.mapsid].tailleTile, maps[gameProperty.mapsid].tailleTile, maps[gameProperty.mapsid].tailleTile);
-    }
-  }
-}
-
 
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -60,7 +44,15 @@ function update() {
 
 }
 
-createTileset(0, "assets/tileset/tiletest.png")
-createMap(0, "assets/maps/map1.json", 64, 0)
+createMap(0, "assets/maps/map1.json");
+createMap(1, "assets/maps/map2.json");
+
+/*loading.loadDivision = 100 / loading.loading.length
+while (load === false){
+  loading.loadtemp = 0
+  for(key in loading){
+    if(loading.loading[key] === true) loading.loadtemp++
+  }
+}*/
 
 setInterval(update, 10);
