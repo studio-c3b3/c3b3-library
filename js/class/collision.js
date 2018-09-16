@@ -4,7 +4,7 @@ function getDistanceBetweenEntity(entity1,entity2){     //return distance (numbe
         return Math.sqrt(vx*vx+vy*vy);
 }
 
-function testCollisionEntity(entity1,entity2){  //return if colliding (true/false)
+function oldTestCollisionEntity(entity1,entity2){  //return if colliding (true/false)
         var distance = getDistanceBetweenEntity(entity1,entity2);
         if(image[entity1].zoom){
           var diag1 = gameMath.diagonaleCarre((entity[entity1].width*image[entity1].zoomNumber)/2);
@@ -25,11 +25,22 @@ function testCollisionEntity(entity1,entity2){  //return if colliding (true/fals
 function updateCollision() {
   for(var key in entity) {
     var isColliding = testCollisionEntity(gameProperty.player,key);
-    if(isColliding & key != gameProperty.player){
-        console.log('Colliding!');
-
-
+    if(isColliding && key != gameProperty.player){
+      console.log('Colliding!');
     }
   }
 
+}
+
+function testCollisionEntity(entity1,entity2){
+  if(gameProperty.collisionVersion === "new") {
+  	if ( !(entity[entity2].x > (entity[entity1].x + gameMath.zoom(entity1))
+  	     || entity[entity2].x < (entity[entity1].x - gameMath.zoom(entity2))
+  	     || entity[entity2].y > (entity[entity1].y + gameMath.zoom(entity1))
+  	     || entity[entity2].y < (entity[entity1].y - gameMath.zoom(entity2))))  {
+      return true
+  	}
+  }else if (gameProperty.collisionVersion === "old") {
+    oldTestCollisionEntity(entity1, entity2);
+  }
 }

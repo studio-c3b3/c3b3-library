@@ -19,6 +19,10 @@ var gameMath = {
       return (num1*WIDTH/maps[gameProperty.mapsid].tailleTile)+num2;
 
 
+  },
+  zoom : function(id){
+    if(image[id].zoom) return (image[id].tailleImage*image[id].zoomNumber)
+    else return (image[id].tailleImage/image[id].zoomNumber)
   }
 
 }
