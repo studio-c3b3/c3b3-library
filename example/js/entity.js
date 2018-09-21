@@ -15,8 +15,8 @@ function update() {
 }
 
 // registerEntity(id, x, y, speed, srcImage, width, height, player);
-registerEntity(0, 0, 0, 10, "../assets/img/bateauPirates.png", 128, 128, true);
-registerEntity(1, 0, 0, 30, "../assets/img/goblin.png", 26, 26, false);
+registerEntity(0, 0, 0, 10, "../assets/img/bateauPirates.png", 128, 128, 0);
+registerEntity(1, 0, 0, 30, "../assets/img/goblin.png", 26, 26, 1);
 
 registerStatic(0, 128,false,2);
 registerStatic(1, 26);

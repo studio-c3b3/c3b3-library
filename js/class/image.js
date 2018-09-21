@@ -30,8 +30,8 @@ function registerStatic(id,tailleImage,zoom,zoomNumber) {
       staticC.zoom = true;
       staticC.zoomNumber = 1;
   }
-  image[id] = staticC;
-
+  entity[id].imageRender = staticC;
+  entity[id].render = true;
 }
 
 function registerAnimation(frameLimit,tailleAnimation,id,zoom,zoomNumber) {
@@ -70,13 +70,13 @@ function registerAnimation(frameLimit,tailleAnimation,id,zoom,zoomNumber) {
     animationC.zoom = true;
     animationC.zoomNumber = 1;
   }
-  image[id] = animationC;
+  entity[id].imageRender = animationC;
+  entity[id].render = true;
 }
 
 function drawImage() {
-  for (var i = 0; i < image.length; i++) {
-
-    image[i].make();
+  for (key in entity) {
+    if(entity[key].render) entity[key].imageRender.make();
 
 
   }
