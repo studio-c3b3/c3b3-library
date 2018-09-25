@@ -1,0 +1,69 @@
+* {
+    padding:0;
+    margin:0;
+}
+
+h1 {
+    text-align:center;
+    padding:20px
+}
+
+.page{
+    margin-left:10%;
+    margin-right:10%;
+    text-align:center;
+}
+
+.canvas__border {
+    border: 1px solid #C91426;
+    margin-left:10px;
+}
+
+.color__main--black {
+    color : #000000
+}
+
+.color__main--white {
+    color : #FEFEFE
+}
+
+.color__main--grey {
+    color : #999899
+}
+
+.color__main--red {
+    color : #C91426
+}
+
+.color__main--yellow {
+    color : #FFEB3F
+}
+
+.bg__main--black {
+    background-color:#000000
+}
+
+.bg__main--white {
+    background-color:#FEFEFE
+}
+
+.bg__main--grey {
+    background-color:#999899
+}
+
+.bg__main--red {
+    background-color:#C91426
+}
+
+.bg__main--yellow {
+    background-color:#FFEB3F
+}
+/*
+color__main--black :#000000
+color__main--white :#FEFEFE
+color__main--grey :#999899
+color__main--red :#C91426
+color__main--yellow:#FFEB3F 
+
+
+*/
