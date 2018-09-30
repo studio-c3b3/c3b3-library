@@ -1,61 +1,61 @@
-//require entity.js for entity[id]
+//require entity.js for entite[id]
 
 var animation = [];
-var frameCount = 0;
+var frameCompteur = 0;
 
 
-function registerStatic(id,tailleImage,zoom,zoomNumber) {
+function registerStatic(id,tailleImage,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille "+tailleImage);
-  var staticC = {
+  var fixeC = {
     id: id,
-    image: entity[id].image,
+    image: entite[id].image,
     tailleImage : tailleImage,
     type: 1,
     zoom: zoom,
-    zoomNumber: zoomNumber,
+    zoomFacteur: zoomFacteur,
 
-    make: function () {
+    gen: function () {
       ctx.beginPath();
       if(zoom){
-        ctx.drawImage(this.image, 0, 0, this.tailleImage, this.tailleImage, entity[id].x, entity[id].y, this.tailleImage*this.zoomNumber, this.tailleImage*this.zoomNumber);
+        ctx.drawImage(this.image, 0, 0, this.tailleImage, this.tailleImage, entite[id].x, entite[id].y, this.tailleImage*this.zoomFacteur, this.tailleImage*this.zoomFacteur);
       }
       else{
-        ctx.drawImage(this.image, 0, 0, this.tailleImage, this.tailleImage, entity[id].x, entity[id].y, this.tailleImage/this.zoomNumber, this.tailleImage/this.zoomNumber);
+        ctx.drawImage(this.image, 0, 0, this.tailleImage, this.tailleImage, entite[id].x, entite[id].y, this.tailleImage/this.zoomFacteur, this.tailleImage/this.zoomFacteur);
       }
       ctx.closePath();
 
       }
     }
-  if(typeof zoom && zoomNumber === undefined) {
+  if(typeof zoom && zoomFacteur === undefined) {
       staticC.zoom = true;
-      staticC.zoomNumber = 1;
+      staticC.zoomFacteur = 1;
   }
-  entity[id].imageRender = staticC;
-  entity[id].render = true;
+  entite[id].imageRendu = fixeC;
+  entite[id].render = true;
 }
 
-function registerAnimation(frameLimit,tailleAnimation,id,zoom,zoomNumber) {
+function registerAnimation(frameLimit,tailleAnimation,id,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille d'animation "+tailleAnimation);
 
   var animationC = {
     id: id,
     frameLimit: frameLimit,
-    image: entity[id].image,
+    image: entite[id].image,
     tailleImage : tailleAnimation,
     taille: 0,
     type: 0,
     zoom: zoom,
-    zoomNumber: zoomNumber,
-    make: function () {
+    zoomFacteur: zoomFacteur,
+    gen: function () {
       ctx.beginPath();
       if(zoom){
-        ctx.drawImage(this.image, this.taille, 0, this.tailleImage, this.tailleImage, entity[id].x, entity[id].y, this.tailleImage*this.zoomNumber, this.tailleImage*this.zoomNumber);
+        ctx.drawImage(this.image, this.taille, 0, this.tailleImage, this.tailleImage, entite[id].x, entite[id].y, this.tailleImage*this.zoomFacteur, this.tailleImage*this.zoomFacteur);
       }
       else{
-        ctx.drawImage(this.image, this.taille, 0, this.tailleImage, this.tailleImage, entity[id].x, entity[id].y, this.tailleImage/this.zoomNumber, this.tailleImage/this.zoomNumber);
+        ctx.drawImage(this.image, this.taille, 0, this.tailleImage, this.tailleImage, entite[id].x, entite[id].y, this.tailleImage/this.zoomFacteur, this.tailleImage/this.zoomFacteur);
       }
       ctx.closePath();
-      if (frameCount % this.frameLimit == 0) {
+      if (frameCompteur % this.frameLimit == 0) {
         if (this.taille < this.tailleImage) {
           this.taille += this.tailleImage;
 
@@ -66,19 +66,19 @@ function registerAnimation(frameLimit,tailleAnimation,id,zoom,zoomNumber) {
       }
     }
   }
-  if(typeof zoom && zoomNumber === undefined) {
+  if(typeof zoom && zoomFacteur === undefined) {
     animationC.zoom = true;
-    animationC.zoomNumber = 1;
+    animationC.zoomFacteur = 1;
   }
-  entity[id].imageRender = animationC;
-  entity[id].render = true;
+  entite[id].imageRendu = animationC;
+  entite[id].rendu = true;
 }
 
 function drawImage() {
-  for (key in entity) {
-    if(entity[key].render) entity[key].imageRender.make();
+  for (key in entite) {
+    if(entite[key].rendu) entite[key].imageRendu.gen();
 
 
   }
-  frameCount++;
+  frameCompteur++;
 }

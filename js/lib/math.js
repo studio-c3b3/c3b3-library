@@ -1,7 +1,7 @@
 var gameMath = {
   middleXY : function(id,xy) {
-    var a = entity[id].x + image[id].tailleImage/2;
-    var b = entity[id].y + image[id].tailleImage/2;
+    var a = entite[id].x + image[id].tailleImage/2;
+    var b = entite[id].y + image[id].tailleImage/2;
     switch (xy)
     {
       case "x" :
@@ -21,8 +21,8 @@ var gameMath = {
 
   },
   zoom : function(id){
-    if(image[id].zoom) return (image[id].tailleImage*image[id].zoomNumber)
-    else return (image[id].tailleImage/image[id].zoomNumber)
+    if(image[id].zoom) return (image[id].tailleImage*image[id].zoomFacteur)
+    else return (image[id].tailleImage/image[id].zoomFacteur)
   }
 
 }

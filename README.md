@@ -26,7 +26,7 @@ Dans un premier temps :
 - FAIRE DES COMMITS AVEC UN MAXIMUM D4INFORMATION POUR EVITER QU4ON DEPOUILLE TOUTE VOS MODIFICATIONS !!!!!
 
 Dans un second temps nous refactorisons le tout et mettrons tout dans d'autres structures :
-- Player.js, boat.js, ennemy.js, map.js etc...
+- joueur.js, boat.js, ennemy.js, map.js etc...
 
 ##TO DO
 - Avoir idéalement les quatre côté d'un bateau (normalement avoir les 4 diagonales aussi)

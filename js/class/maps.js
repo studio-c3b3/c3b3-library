@@ -1,17 +1,20 @@
 //require gameProperty[] and maps[]
 
-function createMap(id, src) {
+function registerMap(id, src) {
   fetch(src).then(response => response.json()).then(function(data){
     var tilesetSrcR = data.tileset;
     var tilesR = data.tile;
     var tileSizeR = data.tileSize;
+    var tileSizeReelR = data.tileSizeReel;
     var MapO = {
+      tileSizeReel : tileSizeReelR,
       tileSize: tileSizeR,
       tiles: tilesR,
       tileset : new Image(),
     }
-    MapO.tileset.src = tilesetSrcR
+    MapO.tileset.src = tilesetSrcR;
     maps[id] = MapO;
+    gameProperty.ready = true;
   })
 }
 function updateMaps() {
@@ -20,10 +23,10 @@ function updateMaps() {
       for(var x = 0; x < WIDTH/maps[gameProperty.mapsid].tileSize; x++){
         ctx.drawImage(
           maps[gameProperty.mapsid].tileset,
-          maps[gameProperty.mapsid].tileSize*maps[gameProperty.mapsid].tiles[y][x],
+          maps[gameProperty.mapsid].tileSizeReel*maps[gameProperty.mapsid].tiles[y][x],
           0,
-          maps[gameProperty.mapsid].tileSize,
-          maps[gameProperty.mapsid].tileSize,
+          maps[gameProperty.mapsid].tileSizeReel,
+          maps[gameProperty.mapsid].tileSizeReel,
           x*maps[gameProperty.mapsid].tileSize,
           y*maps[gameProperty.mapsid].tileSize,
           maps[gameProperty.mapsid].tileSize,
