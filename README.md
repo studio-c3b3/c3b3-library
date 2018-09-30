@@ -1,42 +1,15 @@
 # Jeu De Pirate
 
-Ceci est le git principal du project
-##REGLES DE CODE
-- camelCase : Ecrire les noms de variable en camelCase !
-- Indentation : 2 espaces
-- Commentaire :
-  Si sur une ligne : //
-  Sinon les encapsuler de la sorte  
-  /************
-  ligne de Commentaire
-  ligne de Commentaire
-  ************/
-- Nom des fonctions : En français !
-- Nom des constantes : En majuscule !
+Ceci est la branche pour la doc et les exemples !
 
-##ORGANISATION
-Je met ici les instructions pour réaliser le jeu et structurer les fichiers.
-Dans un premier temps :
+# Docs et exemples disponibles
 
-- Nous allons utiliser index.html pour créer notre Jeu
-- Nous aurons un main.js (principal) qui sera là où nous appellerons tous nos fichiers js, ce qui signifie que le fichier canvas.js deviendra inutile
-- On va créer une librairie de fonction générique. Toutes nos fonctions vont donc être en FRANCAIS. La je créé une première librarie simple pour dessiner en 2D.
-- Tous nos fichiers js seront pour l'instant en vrac dans le dossier js
-- Essayez de commenter au maximum
-- FAIRE DES COMMITS AVEC UN MAXIMUM D4INFORMATION POUR EVITER QU4ON DEPOUILLE TOUTE VOS MODIFICATIONS !!!!!
+## Exemples
 
-Dans un second temps nous refactorisons le tout et mettrons tout dans d'autres structures :
-- joueur.js, boat.js, ennemy.js, map.js etc...
+- animation.html
+- entity.html
+- collision.html
 
-##TO DO
-- Avoir idéalement les quatre côté d'un bateau (normalement avoir les 4 diagonales aussi)
-- Faire bouge rle bateau
+## Docs
 
-
-
-> **En cas de problème avec le git contactez-moi**
-*Faustin*
-
-[Lien Du Discord](https://discord.gg/DHcFFMQ)
-
-Format d'image : 128x128
+- Disponible sur le wiki ou dans les fichiers d'exemples !

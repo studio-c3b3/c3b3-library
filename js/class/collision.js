@@ -23,7 +23,7 @@ function oldTestCollisionEntity(entity1,entity2){  //return if colliding (true/f
 }
 
 function updateCollision() {
-  for(var key in entity) {
+  for(var key in entite) {
     var isColliding = testCollisionEntity(gameProperty.joueur,key);
     if((isColliding && key != gameProperty.joueur) && entite[key].collision){
       entite[gameProperty].genCollision(entite[key].type)
