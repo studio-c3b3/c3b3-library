@@ -1,4 +1,4 @@
-var entity = [];
+var entite = [];
 function registerEntity(id,x,y,speed,srcImage,width,height,type) {
   var entityC;
   switch (type){

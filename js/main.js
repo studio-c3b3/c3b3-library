@@ -2,10 +2,6 @@ const HEIGHT = 448;
 const WIDTH = 640;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var entite = [];
-var image = [];
-var maps = [];
-var tileset = [];
 var gameProperty = {};
 
 gameProperty.mapsReader = "xy";

@@ -1,4 +1,5 @@
 //require gameProperty[] and maps[]
+var maps = [];
 
 function registerMap(id, src) {
   fetch(src).then(response => response.json()).then(function(data){

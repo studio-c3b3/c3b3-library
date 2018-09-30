@@ -1,5 +1,4 @@
 //require entity.js for entite[id]
-
 var animation = [];
 var frameCompteur = 0;
 
@@ -27,11 +26,11 @@ function registerStatic(id,tailleImage,zoom,zoomFacteur) {
       }
     }
   if(typeof zoom && zoomFacteur === undefined) {
-      staticC.zoom = true;
-      staticC.zoomFacteur = 1;
+      fixeC.zoom = true;
+      fixeC.zoomFacteur = 1;
   }
   entite[id].imageRendu = fixeC;
-  entite[id].render = true;
+  entite[id].rendu = true;
 }
 
 function registerAnimation(frameLimit,tailleAnimation,id,zoom,zoomFacteur) {
