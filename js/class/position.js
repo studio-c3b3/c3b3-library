@@ -1,73 +1,73 @@
-//require entity.js with a joueur register !
+//require Entite.js with a joueur declarer !
 
 
 document.onkeydown = function(event){
-        if (gameProperty.joueur == null) {}
+        if (gamePropriete.joueur == null) {}
         else {
           if(event.keyCode === 68)        //d
-                  entite[gameProperty.joueur].pressingRight = true;
+                  entite[gamePropriete.joueur].appuyerDroite = true;
           else if(event.keyCode === 83)   //s
-                  entite[gameProperty.joueur].pressingDown = true;
+                  entite[gamePropriete.joueur].appuyerBas = true;
           else if(event.keyCode === 81) //q
-                  entite[gameProperty.joueur].pressingLeft = true;
+                  entite[gamePropriete.joueur].appuyerGauche = true;
           else if(event.keyCode === 90) // z
-                  entite[gameProperty.joueur].pressingUp = true;
+                  entite[gamePropriete.joueur].appuyerHaut = true;
         }
 }
 
 document.onkeyup = function(event){
-        if (gameProperty.joueur == null) {}
+        if (gamePropriete.joueur == null) {}
         else {
           if(event.keyCode === 68)        //z
-                  entite[gameProperty.joueur].pressingRight = false;
+                  entite[gamePropriete.joueur].appuyerDroite = false;
           else if(event.keyCode === 83)   //s
-                  entite[gameProperty.joueur].pressingDown = false;
+                  entite[gamePropriete.joueur].appuyerBas = false;
           else if(event.keyCode === 81) //q
-                  entite[gameProperty.joueur].pressingLeft = false;
+                  entite[gamePropriete.joueur].appuyerGauche = false;
           else if(event.keyCode === 90) // z
-                  entite[gameProperty.joueur].pressingUp = false;
+                  entite[gamePropriete.joueur].appuyerHaut = false;
         }
 }
 
 updateJoueurPosition = function(){
-        if (gameProperty.joueur == null) {}
+        if (gamePropriete.joueur == null) {}
         else {
-          if(entite[gameProperty.joueur].pressingRight)
-                  entite[gameProperty.joueur].x += entite[gameProperty.joueur].speed;
-          if(entite[gameProperty.joueur].pressingLeft)
-                  entite[gameProperty.joueur].x -= entite[gameProperty.joueur].speed;
-          if(entite[gameProperty.joueur].pressingDown)
-                  entite[gameProperty.joueur].y += entite[gameProperty.joueur].speed;
-          if(entite[gameProperty.joueur].pressingUp)
-                  entite[gameProperty.joueur].y -= entite[gameProperty.joueur].speed;
+          if(entite[gamePropriete.joueur].appuyerDroite)
+                  entite[gamePropriete.joueur].x += entite[gamePropriete.joueur].vitesse;
+          if(entite[gamePropriete.joueur].appuyerGauche)
+                  entite[gamePropriete.joueur].x -= entite[gamePropriete.joueur].vitesse;
+          if(entite[gamePropriete.joueur].appuyerBas)
+                  entite[gamePropriete.joueur].y += entite[gamePropriete.joueur].vitesse;
+          if(entite[gamePropriete.joueur].appuyerHaut)
+                  entite[gamePropriete.joueur].y -= entite[gamePropriete.joueur].vitesse;
 
           //ispositionvalid
-          if(entite[gameProperty.joueur].imageRendu.zoom){
-            if(entite[gameProperty.joueur].x < 0) {
-                    entite[gameProperty.joueur].x = 0;
+          if(entite[gamePropriete.joueur].imageRendu.zoom){
+            if(entite[gamePropriete.joueur].x < 0) {
+                    entite[gamePropriete.joueur].x = 0;
                   }
-            if(entite[gameProperty.joueur].x > WIDTH - entite[gameProperty.joueur].width*entite[gameProperty.joueur].imageRendu.zoomFacteur){
-                    entite[gameProperty.joueur].x = WIDTH - entite[gameProperty.joueur].width*entite[gameProperty.joueur].imageRendu.zoomFacteur;
+            if(entite[gamePropriete.joueur].x > WIDTH - entite[gamePropriete.joueur].width*entite[gamePropriete.joueur].imageRendu.zoomFacteur){
+                    entite[gamePropriete.joueur].x = WIDTH - entite[gamePropriete.joueur].width*entite[gamePropriete.joueur].imageRendu.zoomFacteur;
                   }
-            if(entite[gameProperty.joueur].y < 0){
-                    entite[gameProperty.joueur].y = 0;
+            if(entite[gamePropriete.joueur].y < 0){
+                    entite[gamePropriete.joueur].y = 0;
                   }
-            if(entite[gameProperty.joueur].y > HEIGHT - entite[gameProperty.joueur].height*entite[gameProperty.joueur].imageRendu.zoomFacteur){
-                    entite[gameProperty.joueur].y = HEIGHT - entite[gameProperty.joueur].height*entite[gameProperty.joueur].imageRendu.zoomFacteur;
+            if(entite[gamePropriete.joueur].y > HEIGHT - entite[gamePropriete.joueur].height*entite[gamePropriete.joueur].imageRendu.zoomFacteur){
+                    entite[gamePropriete.joueur].y = HEIGHT - entite[gamePropriete.joueur].height*entite[gamePropriete.joueur].imageRendu.zoomFacteur;
                   }
           }
           else{
-            if(entite[gameProperty.joueur].x < 0) {
-                    entite[gameProperty.joueur].x = 0;
+            if(entite[gamePropriete.joueur].x < 0) {
+                    entite[gamePropriete.joueur].x = 0;
                   }
-            if(entite[gameProperty.joueur].x > WIDTH - entite[gameProperty.joueur].width/entite[gameProperty.joueur].imageRendu.zoomFacteur){
-                    entite[gameProperty.joueur].x = WIDTH - entite[gameProperty.joueur].width/entite[gameProperty.joueur].imageRendu.zoomFacteur;
+            if(entite[gamePropriete.joueur].x > WIDTH - entite[gamePropriete.joueur].width/entite[gamePropriete.joueur].imageRendu.zoomFacteur){
+                    entite[gamePropriete.joueur].x = WIDTH - entite[gamePropriete.joueur].width/entite[gamePropriete.joueur].imageRendu.zoomFacteur;
                   }
-            if(entite[gameProperty.joueur].y < 0){
-                    entite[gameProperty.joueur].y = 0;
+            if(entite[gamePropriete.joueur].y < 0){
+                    entite[gamePropriete.joueur].y = 0;
                   }
-            if(entite[gameProperty.joueur].y > HEIGHT - entite[gameProperty.joueur].height/entite[gameProperty.joueur].imageRendu.zoomFacteur){
-                    entite[gameProperty.joueur].y = HEIGHT - entite[gameProperty.joueur].height/entite[gameProperty.joueur].imageRendu.zoomFacteur;
+            if(entite[gamePropriete.joueur].y > HEIGHT - entite[gamePropriete.joueur].height/entite[gamePropriete.joueur].imageRendu.zoomFacteur){
+                    entite[gamePropriete.joueur].y = HEIGHT - entite[gamePropriete.joueur].height/entite[gamePropriete.joueur].imageRendu.zoomFacteur;
                   }
           }
         }

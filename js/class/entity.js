@@ -1,17 +1,17 @@
 var entite = [];
-function registerEntity(id,x,y,speed,srcImage,width,height,type) {
-  var entityC;
+function declarerEntite(id,x,y,vitesse,srcImage,width,height,type) {
+  var EntiteC;
   switch (type){
     case 0: //joueur
       entiteC = {
         type: 0,
         x:x,
         y:y,
-        speed:speed,
-        pressingDown:false,
-        pressingUp:false,
-        pressingLeft:false,
-        pressingRight:false,
+        vitesse:vitesse,
+        appuyerBas:false,
+        appuyerHaut:false,
+        appuyerGauche:false,
+        appuyerDroite:false,
         image:new Image(),
         width:width,
         height:height,
@@ -22,7 +22,7 @@ function registerEntity(id,x,y,speed,srcImage,width,height,type) {
         }
       }
       entiteC.image.src = srcImage;
-      gameProperty.joueur = id;
+      gamePropriete.joueur = id;
       console.log('%c Définition de '+id+' en tant que Joueur', 'color: white; background: #66b3ff; font-weight: bold; display: block');
       break
 
@@ -31,7 +31,7 @@ function registerEntity(id,x,y,speed,srcImage,width,height,type) {
         type: 1,
         x:x,
         y:y,
-        speed:speed,
+        vitesse:vitesse,
         collision : true,
         joueur: false,
         image:new Image(),

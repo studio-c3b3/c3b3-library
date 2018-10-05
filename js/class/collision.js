@@ -1,22 +1,22 @@
-function getDistanceBetweenEntity(entity1,entity2){     //return distance (number)
-        var vx = gameMath.middleXY(entity1, "x") - gameMath.middleXY(entity2, "x");
-        var vy = gameMath.middleXY(entity1, "y") - gameMath.middleXY(entity2, "y");
+function distanceEntreEntite(Entite1,Entite2){
+        var vx = gameMath.middleXY(Entite1, "x") - gameMath.middleXY(Entite2, "x");
+        var vy = gameMath.middleXY(Entite1, "y") - gameMath.middleXY(Entite2, "y");
         return Math.sqrt(vx*vx+vy*vy);
 }
 
-function oldTestCollisionEntity(entity1,entity2){  //return if colliding (true/false)
-        var distance = getDistanceBetweenEntity(entity1,entity2);
-        if(entite[entity1].imageRendu.zoom){
-          var diag1 = gameMath.diagonaleCarre((entite[entity1].width*entite[entity1].imageRendu.zoomFacteur)/2);
+function ancienTestCollisionEntite(Entite1,Entite2){
+        var distance = distanceEntreEntite(Entite1,Entite2);
+        if(entite[Entite1].imageRendu.zoom){
+          var diag1 = gameMath.diagonaleCarre((entite[Entite1].width*entite[Entite1].imageRendu.zoomFacteur)/2);
         }
         else{
-          var diag1 = gameMath.diagonaleCarre((entite[entity1].width/entite[entity1].imageRendu.zoomFacteur)/2);
+          var diag1 = gameMath.diagonaleCarre((entite[Entite1].width/entite[Entite1].imageRendu.zoomFacteur)/2);
         }
-        if(image[entity2].zoom){
-          var diag2 = gameMath.diagonaleCarre((entite[entity1].width*entite[entity2].imageRendu.zoomFacteur)/2);
+        if(image[Entite2].zoom){
+          var diag2 = gameMath.diagonaleCarre((entite[Entite1].width*entite[Entite2].imageRendu.zoomFacteur)/2);
         }
         else{
-          var diag2 = gameMath.diagonaleCarre((entite[entity1].width/entite[entity2].imageRendu.zoomFacteur)/2);
+          var diag2 = gameMath.diagonaleCarre((entite[Entite1].width/entite[Entite2].imageRendu.zoomFacteur)/2);
         }
 
         return distance < Math.max(diag1,diag2);
@@ -24,23 +24,23 @@ function oldTestCollisionEntity(entity1,entity2){  //return if colliding (true/f
 
 function updateCollision() {
   for(var key in entite) {
-    var isColliding = testCollisionEntity(gameProperty.joueur,key);
-    if((isColliding && key != gameProperty.joueur) && entite[key].collision){
-      entite[gameProperty].genCollision(entite[key].type)
+    var isColliding = testCollisionEntite(gamePropriete.joueur,key);
+    if((isColliding && key != gamePropriete.joueur) && entite[key].collision){
+      entite[gamePropriete].genCollision(entite[key].type)
     }
   }
 
 }
 
-function testCollisionEntity(entity1,entity2){
-  if(gameProperty.collisionVersion === "v2") {
-  	if ( !(entite[entity2].x > (entite[entity1].x + gameMath.zoom(entity1))
-  	     || entite[entity2].x < (entite[entity1].x - gameMath.zoom(entity2))
-  	     || entite[entity2].y > (entite[entity1].y + gameMath.zoom(entity1))
-  	     || entite[entity2].y < (entite[entity1].y - gameMath.zoom(entity2))))  {
+function testCollisionEntite(Entite1,Entite2){
+  if(gamePropriete.collisionVersion === "v2") {
+  	if ( !(entite[Entite2].x > (entite[Entite1].x + gameMath.zoom(Entite1))
+  	     || entite[Entite2].x < (entite[Entite1].x - gameMath.zoom(Entite2))
+  	     || entite[Entite2].y > (entite[Entite1].y + gameMath.zoom(Entite1))
+  	     || entite[Entite2].y < (entite[Entite1].y - gameMath.zoom(Entite2))))  {
       return true
   	}
-  }else if (gameProperty.collisionVersion === "v1") {
-    oldTestCollisionEntity(entity1, entity2);
+  }else if (gamePropriete.collisionVersion === "v1") {
+    ancienTestCollisionEntite(Entite1, Entite2);
   }
 }

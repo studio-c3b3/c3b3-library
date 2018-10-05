@@ -16,7 +16,7 @@ var gameMath = {
     return Math.sqrt(num1*num1+num1*num1);
   },
   tiles : function(num1,num2) {
-      return (num1*WIDTH/maps[gameProperty.mapsid].tailleTile)+num2;
+      return (num1*WIDTH/maps[gamePropriete.mapsid].tailleTile)+num2;
 
 
   },

@@ -1,9 +1,9 @@
-//require entity.js for entite[id]
+//require Entite.js for entite[id]
 var animation = [];
 var frameCompteur = 0;
 
 
-function registerStatic(id,tailleImage,zoom,zoomFacteur) {
+function declarerStatic(id,tailleImage,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille "+tailleImage);
   var fixeC = {
     id: id,
@@ -33,7 +33,7 @@ function registerStatic(id,tailleImage,zoom,zoomFacteur) {
   entite[id].rendu = true;
 }
 
-function registerAnimation(frameLimit,tailleAnimation,id,zoom,zoomFacteur) {
+function declarerAnimation(frameLimit,tailleAnimation,id,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille d'animation "+tailleAnimation);
 
   var animationC = {
