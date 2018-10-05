@@ -8,6 +8,11 @@ gamePropriete.mapsid = 0;
 gamePropriete.player = 0;
 gamePropriete.pret = false;
 
+if (!localStorage.getItem("testAlert")){
+  alert("VERSION DE TEST")
+}
+localStorage.setItem("testAlert", true);
+
 function update() {
   if (gamePropriete.pret){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
