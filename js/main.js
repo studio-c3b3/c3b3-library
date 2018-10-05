@@ -4,6 +4,12 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var gamePropriete = {};
 
+
+if (!localStorage.getItem("testAlert")){
+  alert("VERSION DE TEST")
+}
+localStorage.setItem("testAlert", true);
+
 gamePropriete.mapsReader = "xy";
 gamePropriete.mapsid = 0;
 gamePropriete.player = 0;
