@@ -42,7 +42,23 @@ function declarerEntite(id,x,y,vitesse,srcImage,width,height,type) {
       }
       entiteC.image.src = srcImage;
       break
-  }
+
+  case 2: // Elements de menu
+    entiteC = {
+      type: 2,
+      x:x,
+      y:y,
+      collision : false,
+      joueur: false,
+      image:new Image(),
+      width:width,
+      height:height,
+      rendu: false,
+      imageRendu : {}
+    }
+    entiteC.image.src = srcImage;
+    break
+}
 
   console.log("Ajout de "+id+" en tant qu'entite");
 

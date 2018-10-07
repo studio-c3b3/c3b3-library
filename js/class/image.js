@@ -3,12 +3,13 @@ var animation = [];
 var frameCompteur = 0;
 
 
-function declarerStatic(id,tailleImage,zoom,zoomFacteur) {
-  console.log("Ajout de "+id+" avec comme taille "+tailleImage);
+function declarerStatic(id,width,height,zoom,zoomFacteur) {
+  console.log("Ajout de "+id+" avec comme taille "+width+"*"+height);
   var fixeC = {
     id: id,
     image: entite[id].image,
-    tailleImage : tailleImage,
+    height : height,
+    width : width,
     type: 1,
     zoom: zoom,
     zoomFacteur: zoomFacteur,
@@ -16,10 +17,10 @@ function declarerStatic(id,tailleImage,zoom,zoomFacteur) {
     gen: function () {
       ctx.beginPath();
       if(zoom){
-        ctx.drawImage(this.image, 0, 0, this.tailleImage, this.tailleImage, entite[id].x, entite[id].y, this.tailleImage*this.zoomFacteur, this.tailleImage*this.zoomFacteur);
+        ctx.drawImage(this.image, 0, 0, this.width, this.height, entite[id].x, entite[id].y, this.width*this.zoomFacteur, this.height*this.zoomFacteur);
       }
       else{
-        ctx.drawImage(this.image, 0, 0, this.tailleImage, this.tailleImage, entite[id].x, entite[id].y, this.tailleImage/this.zoomFacteur, this.tailleImage/this.zoomFacteur);
+        ctx.drawImage(this.image, 0, 0, this.width, this.height, entite[id].x, entite[id].y, this.width/this.zoomFacteur, this.height/this.zoomFacteur);
       }
       ctx.closePath();
 
@@ -33,7 +34,7 @@ function declarerStatic(id,tailleImage,zoom,zoomFacteur) {
   entite[id].rendu = true;
 }
 
-function declarerAnimation(frameLimit,tailleAnimation,id,zoom,zoomFacteur) {
+function declarerAnimation(frameLimit,width,height,id,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille d'animation "+tailleAnimation);
 
   var animationC = {
@@ -76,8 +77,6 @@ function declarerAnimation(frameLimit,tailleAnimation,id,zoom,zoomFacteur) {
 function drawImage() {
   for (key in entite) {
     if(entite[key].rendu) entite[key].imageRendu.gen();
-
-
   }
   frameCompteur++;
 }
