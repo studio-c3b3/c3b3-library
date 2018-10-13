@@ -44,13 +44,14 @@ function declarerMenuElement(id,x,width,height,srcImage,zoom,zoomFacteur,callbac
   declarerStatic(id, width, height, zoom, zoomFacteur);
   entite[id].imageRendu.active = false;
   entite[id].imageRendu.cursor = false;
-  entite[id].callback = callback;
+  entite[id].callback() = callback;
   menuElement.push(id);
 }
 
 function update() {
   if (gamePropriete.pret){
     if (gamePropriete.state == 0){
+      updateMaps();
       updateMenu();
     }
     else if(gamePropriete.state == 1){
