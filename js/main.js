@@ -1,6 +1,6 @@
 const HEIGHT = 448;
 const WIDTH = 640;
-var canvas = document.getElementById("myCanvas");
+var canvas = document.getElementById("gameCanvas");
 var ctx = canvas.getContext("2d");
 var gamePropriete = {};
 var menuElement = [];
@@ -24,8 +24,9 @@ function updateMenu() {
       entite[cle].imageRendu.gen();
     }
     if(cle === menuElement[gamePropriete.menuCursor]){
+      console.log("Yep");
       entite[gamePropriete.menuCursorId].x = entite[cle].x;
-      entite[gamePropriete.menuCursorId].y = entite[cle].y - 10;
+      entite[gamePropriete.menuCursorId].y = entite[cle].y - 20;
       entite[gamePropriete.menuCursorId].imageRendu.gen();
     }
   }
@@ -62,6 +63,7 @@ function update() {
     }
   }
 }
+
 declarerMenuCursor(3, 22, 21, "assets/img/menu/arrowBlue_right.png", 1, 1)
 declarerMenuElement(1, 0, 96, 40, "assets/img/menu/play.png", 1, 1, function(){console.log("test")});
 declarerMenuElement(2, 180, 96, 40, "assets/img/menu/play.png", 1, 1, function(){console.log("test 1")})

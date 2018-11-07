@@ -5,7 +5,24 @@
 
 </HEAD>
 <BODY>
-<canvas id="myCanvas" width="640" height="448"><p>Votre navigateur n'autorise pas les canvas :'(</p></canvas>
+<style media="screen">
+#gameCanvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid green;
+}
+#gameDiv{
+  /*background-image: url("assets/img/mer.png");
+  background-repeat: repeat;*/
+  height: 100%;
+
+}
+</style>
+<div id="gameDiv">
+  <canvas id="gameCanvas" width="640" height="448"><p>Votre navigateur n'autorise pas les canvas :'(</p></canvas>
+</div>
 <script language="javascript" type="text/javascript" src="./js/class/entity.js"></script>
 <script language="javascript" type="text/javascript" src="./js/class/collision.js"></script>
 <script language="javascript" type="text/javascript" src="./js/class/image.js"></script>
