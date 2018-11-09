@@ -13,13 +13,26 @@
   transform: translate(-50%, -50%);
   border: 3px solid green;
 }
-#gameDiv{
-  /*background-image: url("assets/img/mer.png");
-  background-repeat: repeat;*/
+#background {
+  --blurVal: 2px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  right: 0;
+  z-index: 0;
+  display: block;
+  background-image: url('assets/img/mer.png');
+  background-repeat: repeat;
   height: 100%;
 
+  -webkit-filter: blur(var(--blurVal));
+  -moz-filter: blur(var(--blurVal));
+  -o-filter: blur(var(--blurVal));
+  -ms-filter: blur(var(--blurVal));
+  filter: blur(var(--blurVal));
 }
 </style>
+<div id="background"></div>
 <div id="gameDiv">
   <canvas id="gameCanvas" width="640" height="448"><p>Votre navigateur n'autorise pas les canvas :'(</p></canvas>
 </div>
