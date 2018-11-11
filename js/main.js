@@ -4,7 +4,8 @@ var canvas = document.getElementById("gameCanvas");
 var ctx = canvas.getContext("2d");
 var gamePropriete = {};
 var menuElement = [];
-gamePropriete.menuCursor = 0;
+gamePropriete.menuCursor = 0; //emplacement du curseur
+gamePropriete.menuCursorId = null; // Le curseur actif
 
 gamePropriete.mapsReader = "xy";
 gamePropriete.mapsid = 0;
@@ -19,14 +20,14 @@ if (!localStorage.getItem("testAlert")){
 
 
 function updateMenu() {
+
   for(var cle in entite){
-    if(entite[cle].type == 2 && !entite[cle].imageRendu.cursor){
+    if(entite[cle].type == 2 && !entite[cle].imageRendu.cursor){ //C'est un curseur
       entite[cle].imageRendu.gen();
     }
-    if(cle === menuElement[gamePropriete.menuCursor]){
-      console.log("Yep");
-      entite[gamePropriete.menuCursorId].x = entite[cle].x;
-      entite[gamePropriete.menuCursorId].y = entite[cle].y - 20;
+    if(cle === menuElement[gamePropriete.menuCursor].toString()){
+      entite[gamePropriete.menuCursorId].y = entite[cle].y;
+      entite[gamePropriete.menuCursorId].x = entite[cle].x - 20;
       entite[gamePropriete.menuCursorId].imageRendu.gen();
     }
   }

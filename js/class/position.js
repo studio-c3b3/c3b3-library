@@ -15,10 +15,10 @@ document.onkeydown = function(event) {
   }
   else if(gamePropriete.state == 0){
     if(event.keyCode === 90){
-      if(menuElement.length >= gamePropriete.menuCursor) gamePropriete.menuCursor += 1;
+      if(menuElement.length <= gamePropriete.menuCursor) gamePropriete.menuCursor -= 1;
     }
     else if(event.keyCode === 83){
-      if(menuElement.length <= gamePropriete.menuCursor) gamePropriete.menuCursor -= 1;
+      if(menuElement.length >= gamePropriete.menuCursor) gamePropriete.menuCursor += 1;
     }
     else if(event.keyCode === 13){
       entite[menuElement[gamePropriete.menuCursor]].callback();
