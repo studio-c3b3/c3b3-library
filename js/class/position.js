@@ -1,7 +1,7 @@
 //require Entite.js with a joueur declarer !
 // TODO : Refaire les keycode.
 document.onkeydown = function(event) {
-  if(gamePropriete.state === 1){
+  if(gamePropriete.etat === 1){
     if (gamePropriete.joueur == null) {
         console.error("Le joueur n'est pas spécifié donc aucun déplacement possible");
     } else {
@@ -16,7 +16,7 @@ document.onkeydown = function(event) {
     }
 
   }
-  else if(gamePropriete.state === 0){
+  else if(gamePropriete.etat === 0){
     if(event.keyCode === 90){
       if(0 < gamePropriete.menuCursor) gamePropriete.menuCursor -= 1;
     }
@@ -30,7 +30,7 @@ document.onkeydown = function(event) {
 };
 
 document.onkeyup = function(event) {
-  if(gamePropriete.state === 1){
+  if(gamePropriete.etat === 1){
     if (gamePropriete.joueur == null) {} else {
         if (event.keyCode === 68) //d
             entite[gamePropriete.joueur].appuyerDroite = false;

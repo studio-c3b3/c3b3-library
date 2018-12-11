@@ -36,7 +36,6 @@ function declarerStatic(id,width,height,zoom,zoomFacteur) {
 
 function declarerAnimation(frameLimit,width,height,id,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille d'animation "+tailleAnimation);
-
   var animationC = {
     id: id,
     frameLimit: frameLimit,
@@ -76,7 +75,7 @@ function declarerAnimation(frameLimit,width,height,id,zoom,zoomFacteur) {
 
 function drawImage() {
   for (key in entite) {
-    if(entite[key].rendu) entite[key].imageRendu.gen();
+    if(entite[key].rendu){entite[key].imageRendu.gen()}
   }
   frameCompteur++;
 }

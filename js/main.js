@@ -4,6 +4,7 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 let gamePropriete = {};
 let menuElement = [];
+let etats = [];
 gamePropriete.menuCursor = 0; //emplacement du curseur
 gamePropriete.menuCursorId = null; // Le curseur actif
 
@@ -11,7 +12,7 @@ gamePropriete.mapsReader = "xy";
 gamePropriete.mapsid = 0;
 gamePropriete.player = 0;
 gamePropriete.pret = false;
-gamePropriete.state = 0;
+gamePropriete.etat = 0;
 
 if (!localStorage.getItem("testAlert")){
   alert("VERSION DE TEST");
@@ -46,29 +47,64 @@ function declarerMenuElement(id,x,width,height,srcImage,zoom,zoomFacteur,callbac
   declarerStatic(id, width, height, zoom, zoomFacteur);
   entite[id].imageRendu.active = false;
   entite[id].imageRendu.cursor = false;
-  entite[id].callback = function(){callback();};
+  entite[id].callback = () => callback();
   menuElement.push(id);
 }
+function declarerEtat(id, type, functionEntrer, functionSortie){
+  etats[id] = {
+    id: id,
+    type: type,
+    functionEntrer: () => functionEntrer(),
+    functionSortie: () => functionSortie()
+  };
+}
 
-function update() {
-  if (gamePropriete.pret){
-    if (gamePropriete.state === 0){
-      updateMaps();
-      updateMenu();
-    }
-    else if(gamePropriete.state === 1){
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      updateMaps();
-      updateJoueurPosition();
-      drawImage();
-    }
+function changeScene(id) {
+  if(etats[gamePropriete.etat].functionSortie) etats[gamePropriete.etat].functionSortie();
+  if(etats[id].functionEntrer) {
+    etats[id].functionEntrer();
+    gamePropriete.etat = id;
   }
 }
 
+
+function update() {
+  if (gamePropriete.etat === 0){
+    updateMaps();
+    updateMenu();
+  }
+  else if(gamePropriete.etat === 1){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    updateMaps();
+    updateJoueurPosition();
+    drawImage();
+  }
+}
+
+declarerEtat(0, 0,
+    function(){
+    console.log("Bienvenue dans le menu");
+  },
+    function () {
+      for(let key in entite){
+        if(entite[key].type === 2) {
+          console.log("Debug");
+          entite[key].rendu = false;
+        }
+      }
+  },);
+declarerEtat(1, 0,
+    function(){
+      console.log("Bienvenue dans le monde");
+    },
+    function () {
+      console.log("Au revoir");
+    });
+
 declarerMenuCursor(3, 22, 21, "assets/img/menu/arrowBlue_right.png", 1, 1);
-declarerMenuElement(1, 0, 96, 40, "assets/img/menu/play.png", 1, 1, function () {gamePropriete.state = 1});
-declarerMenuElement(2, 180, 96, 40, "assets/img/menu/play.png", 1, 1, function(){console.log("test 1")});
+declarerMenuElement(1, 0, 96, 40, "assets/img/menu/play.png", 1, 1, () => changeScene(1));
+declarerMenuElement(2, 180, 96, 40, "assets/img/menu/play.png", 1, 1, () => console.log("test 1"));
 declarerMap(0, "assets/maps/map1.json");
 declarerEntite(0, 0, 0, 10, "assets/img/bateauPirates.png", 128, 128, 0);
-declarerStatic(0, 128, 128, 0, 0);
+declarerStatic(0, 128, 128, 0, 1);
 setInterval(update, 10);
