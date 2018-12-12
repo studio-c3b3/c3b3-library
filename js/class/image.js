@@ -1,6 +1,5 @@
 //require Entite.js for entite[id]
-var animation = [];
-var frameCompteur = 0;
+let frameCompteur = 0;
 
 
 function declarerStatic(id,width,height,zoom,zoomFacteur) {
@@ -25,7 +24,7 @@ function declarerStatic(id,width,height,zoom,zoomFacteur) {
       ctx.closePath();
 
       }
-    }
+    };
   if(typeof zoom && zoomFacteur === undefined) {
       fixeC.zoom = true;
       fixeC.zoomFacteur = 1;
@@ -34,7 +33,7 @@ function declarerStatic(id,width,height,zoom,zoomFacteur) {
   entite[id].rendu = true;
 }
 
-function declarerAnimation(frameLimit,width,height,id,zoom,zoomFacteur) {
+function declarerAnimation(frameLimit,width,height,tailleAnimation,id,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille d'animation "+tailleAnimation);
   var animationC = {
     id: id,
@@ -54,7 +53,7 @@ function declarerAnimation(frameLimit,width,height,id,zoom,zoomFacteur) {
         ctx.drawImage(this.image, this.taille, 0, this.tailleImage, this.tailleImage, entite[id].x, entite[id].y, this.tailleImage/this.zoomFacteur, this.tailleImage/this.zoomFacteur);
       }
       ctx.closePath();
-      if (frameCompteur % this.frameLimit == 0) {
+      if (frameCompteur % this.frameLimit === 0) {
         if (this.taille < this.tailleImage) {
           this.taille += this.tailleImage;
 
@@ -64,7 +63,7 @@ function declarerAnimation(frameLimit,width,height,id,zoom,zoomFacteur) {
         }
       }
     }
-  }
+  };
   if(typeof zoom && zoomFacteur === undefined) {
     animationC.zoom = true;
     animationC.zoomFacteur = 1;
@@ -74,7 +73,7 @@ function declarerAnimation(frameLimit,width,height,id,zoom,zoomFacteur) {
 }
 
 function drawImage() {
-  for (key in entite) {
+  for (let key in entite) {
     if(entite[key].rendu){entite[key].imageRendu.gen()}
   }
   frameCompteur++;

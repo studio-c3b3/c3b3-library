@@ -14,12 +14,6 @@ gamePropriete.player = 0;
 gamePropriete.pret = false;
 gamePropriete.etat = 0;
 
-if (!localStorage.getItem("testAlert")){
-  alert("VERSION DE TEST");
-  localStorage.setItem("testAlert", true);
-}
-
-
 function updateMenu() {
 
   for(let cle in entite){
@@ -50,12 +44,13 @@ function declarerMenuElement(id,x,width,height,srcImage,zoom,zoomFacteur,callbac
   entite[id].callback = () => callback();
   menuElement.push(id);
 }
-function declarerEtat(id, type, functionEntrer, functionSortie){
+function declarerEtat(id, type, functionEntrer, functionSortie, update){
   etats[id] = {
     id: id,
     type: type,
     functionEntrer: () => functionEntrer(),
-    functionSortie: () => functionSortie()
+    functionSortie: () => functionSortie(),
+    update: () => update(),
   };
 }
 
@@ -69,42 +64,42 @@ function changeScene(id) {
 
 
 function update() {
-  if (gamePropriete.etat === 0){
-    updateMaps();
-    updateMenu();
-  }
-  else if(gamePropriete.etat === 1){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    updateMaps();
-    updateJoueurPosition();
-    drawImage();
-  }
+  etats[gamePropriete.etat].update();
 }
 
 declarerEtat(0, 0,
-    function(){
+    () => {
     console.log("Bienvenue dans le menu");
   },
-    function () {
+    () => {
       for(let key in entite){
         if(entite[key].type === 2) {
-          console.log("Debug");
           entite[key].rendu = false;
         }
       }
-  },);
-declarerEtat(1, 0,
-    function(){
+  },
+    () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      updateMaps();
+      updateMenu();
+    });
+declarerEtat(1, 1,
+    () => {
       console.log("Bienvenue dans le monde");
     },
-    function () {
+    () => {
       console.log("Au revoir");
-    });
+    },
+    () =>  {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      updateMaps();
+      updateJoueurPosition();
+      drawImage();});
 
 declarerMenuCursor(3, 22, 21, "assets/img/menu/arrowBlue_right.png", 1, 1);
 declarerMenuElement(1, 0, 96, 40, "assets/img/menu/play.png", 1, 1, () => changeScene(1));
 declarerMenuElement(2, 180, 96, 40, "assets/img/menu/play.png", 1, 1, () => console.log("test 1"));
 declarerMap(0, "assets/maps/map1.json");
 declarerEntite(0, 0, 0, 10, "assets/img/bateauPirates.png", 128, 128, 0);
-declarerStatic(0, 128, 128, 0, 1);
+declarerAnimation(20,256,256,128,0,0,1);
 setInterval(update, 10);

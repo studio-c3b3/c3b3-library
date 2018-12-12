@@ -1,47 +1,64 @@
 //require Entite.js with a joueur declarer !
-// TODO : Refaire les keycode.
 document.onkeydown = function(event) {
-  if(gamePropriete.etat === 1){
-    if (gamePropriete.joueur == null) {
+    if (etats[gamePropriete.etat].type === 1) if (gamePropriete.joueur == null) {
         console.error("Le joueur n'est pas spécifié donc aucun déplacement possible");
     } else {
-        if (event.keyCode === 68) //d
-            entite[gamePropriete.joueur].appuyerDroite = true;
-        else if (event.keyCode === 83) //s
-            entite[gamePropriete.joueur].appuyerBas = true;
-        else if (event.keyCode === 81) //q
-            entite[gamePropriete.joueur].appuyerGauche = true;
-        else if (event.keyCode === 90) // z
-            entite[gamePropriete.joueur].appuyerHaut = true;
+        switch (event.code) {
+            case "KeyA":
+            case "ArrowLeft":
+                entite[gamePropriete.joueur].appuyerGauche = true;
+                break;
+            case "KeyW":
+            case "ArrowUp":
+                entite[gamePropriete.joueur].appuyerHaut = true;
+                break;
+            case "KeyD":
+            case "ArrowRight":
+                entite[gamePropriete.joueur].appuyerDroite = true;
+                break;
+            case "KeyS":
+            case "ArrowDown":
+                entite[gamePropriete.joueur].appuyerBas = true;
+                break;
+        }
     }
-
-  }
-  else if(gamePropriete.etat === 0){
-    if(event.keyCode === 90){
-      if(0 < gamePropriete.menuCursor) gamePropriete.menuCursor -= 1;
+    else if (etats[gamePropriete.etat].type === 0) switch (event.code) {
+        case "KeyW":
+        case "ArrowUp":
+            if (0 < gamePropriete.menuCursor) gamePropriete.menuCursor -= 1;
+            break;
+        case "KeyS":
+        case "ArrowDown":
+            if (menuElement.length - 1 > gamePropriete.menuCursor) gamePropriete.menuCursor += 1;
+            break;
+        case "Enter":
+            entite[menuElement[gamePropriete.menuCursor]].callback();
+            break;
     }
-    else if(event.keyCode === 83){
-      if(menuElement.length-1 > gamePropriete.menuCursor) gamePropriete.menuCursor += 1;
-    }
-    else if(event.keyCode === 13){
-      entite[menuElement[gamePropriete.menuCursor]].callback();
-    }
-  }
-};
+}
 
 document.onkeyup = function(event) {
-  if(gamePropriete.etat === 1){
+  if(etats[gamePropriete.etat].type === 1){
     if (gamePropriete.joueur == null) {} else {
-        if (event.keyCode === 68) //d
-            entite[gamePropriete.joueur].appuyerDroite = false;
-        else if (event.keyCode === 83) //s
-            entite[gamePropriete.joueur].appuyerBas = false;
-        else if (event.keyCode === 81) //q
-            entite[gamePropriete.joueur].appuyerGauche = false;
-        else if (event.keyCode === 90) // z
-            entite[gamePropriete.joueur].appuyerHaut = false;
+        switch (event.code) {
+            case "KeyA":
+            case "ArrowLeft":
+                entite[gamePropriete.joueur].appuyerGauche = false;
+                break;
+            case "KeyW  ":
+            case "ArrowUp":
+                entite[gamePropriete.joueur].appuyerHaut = false;
+                break;
+            case "KeyD":
+            case "ArrowRight":
+                entite[gamePropriete.joueur].appuyerDroite = false;
+                break;
+            case "KeyS":
+            case "ArrowDown":
+                entite[gamePropriete.joueur].appuyerBas = false;
+                break;
+        }
     }
-
   }
 };
 
