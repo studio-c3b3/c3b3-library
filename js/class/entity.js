@@ -1,22 +1,23 @@
 var entite = [];
 function declarerEntite(id,x,y,vitesse,srcImage,width,height,type) {
+  let entiteC;
   switch (type){
     case 0: //joueur
       entiteC = {
         type: 0,
-        x:x,
-        y:y,
-        vitesse:vitesse,
-        appuyerBas:false,
-        appuyerHaut:false,
-        appuyerGauche:false,
-        appuyerDroite:false,
-        image:new Image(),
-        width:width,
-        height:height,
+        x: x,
+        y: y,
+        vitesse: vitesse,
+        appuyerBas: false,
+        appuyerHaut: false,
+        appuyerGauche: false,
+        appuyerDroite: false,
+        image: new Image(),
+        width: width,
+        height: height,
         rendu: false,
-        imageRendu : {},
-        genCollision : function(type) {
+        imageRendu: {},
+        genCollision: function (type) {
           console.log("Collision !");
         }
       };

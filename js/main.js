@@ -21,7 +21,7 @@ function updateMenu() {
       entite[cle].imageRendu.gen();
     }
     if(cle === menuElement[gamePropriete.menuCursor].toString()){
-      entite[gamePropriete.menuCursorId].y = entite[cle].y;
+      entite[gamePropriete.menuCursorId].y = entite[cle].height/2-entite[gamePropriete.menuCursorId].height/2;
       entite[gamePropriete.menuCursorId].x = entite[cle].x - 20;
       entite[gamePropriete.menuCursorId].imageRendu.gen();
     }

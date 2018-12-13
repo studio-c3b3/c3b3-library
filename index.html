@@ -1,41 +1,41 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <HTML lang="fr">
 <HEAD>
-  <meta charset="UTF-8">
-  <title>Salentin's Journey</title>
-  <style media="screen" type="text/css">
-    #gameCanvas {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 3px solid green;
-    }
-    #background {
-      --blurVal: 2px;
-      position: absolute;
-      left:0;
-      top:0;
-      right: 0;
-      z-index: 0;
-      display: block;
-      background-image: url('assets/img/mer.png');
-      background-repeat: repeat;
-      height: 100%;
+    <meta charset="UTF-8">
+    <title>Salentin's Journey</title>
+    <style media="screen" type="text/css">
+        #gameCanvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid green;
+        }
+        #background {
+            --blurVal: 2px;
+            position: absolute;
+            left:0;
+            top:0;
+            right: 0;
+            z-index: 0;
+            display: block;
+            background-image: url('assets/img/mer.png');
+            background-repeat: repeat;
+            height: 100%;
 
-      -webkit-filter: blur(var(--blurVal));
-      -moz-filter: blur(var(--blurVal));
-      -o-filter: blur(var(--blurVal));
-      -ms-filter: blur(var(--blurVal));
-      filter: blur(var(--blurVal));
-    }
-  </style>
+            -webkit-filter: blur(var(--blurVal));
+            -moz-filter: blur(var(--blurVal));
+            -o-filter: blur(var(--blurVal));
+            -ms-filter: blur(var(--blurVal));
+            filter: blur(var(--blurVal));
+        }
+    </style>
 </HEAD>
 <BODY>
 
 <div id="background"></div>
 <div id="gameDiv">
-  <canvas id="gameCanvas" width="640" height="448"><p>Votre navigateur n'autorise pas les canvas :'(</p></canvas>
+    <canvas id="gameCanvas" width="640" height="448"><p>Votre navigateur n'autorise pas les canvas :'(</p></canvas>
 </div>
 <script language="javascript" type="text/javascript" src="./js/class/entity.js"></script>
 <script language="javascript" type="text/javascript" src="./js/class/collision.js"></script>
