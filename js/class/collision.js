@@ -1,31 +1,32 @@
-function distanceEntreEntite(Entite1,Entite2){
-        var vx = gameMath.middleXY(Entite1, "x") - gameMath.middleXY(Entite2, "x");
-        var vy = gameMath.middleXY(Entite1, "y") - gameMath.middleXY(Entite2, "y");
+function distanceEntreEntite(entite1,entite2){
+        let vx = gameMath.middleXY(entite1, "x") - gameMath.middleXY(entite2, "x");
+        let vy = gameMath.middleXY(entite1, "y") - gameMath.middleXY(entite2, "y");
         return Math.sqrt(vx*vx+vy*vy);
 }
 
-function ancienTestCollisionEntite(Entite1,Entite2){
-        var distance = distanceEntreEntite(Entite1,Entite2);
-        if(entite[Entite1].imageRendu.zoom){
-          var diag1 = gameMath.diagonaleCarre((entite[Entite1].width*entite[Entite1].imageRendu.zoomFacteur)/2);
+function ancienTestCollisionEntite(entite1,entite2){
+        let diag1,diag2;
+        let distance = distanceEntreEntite(entite1,entite2);
+        if(entite[entite1].imageRendu.zoom){
+          diag1 = gameMath.diagonaleCarre((entite[entite1].width*entite[entite1].imageRendu.zoomFacteur)/2);
         }
         else{
-          var diag1 = gameMath.diagonaleCarre((entite[Entite1].width/entite[Entite1].imageRendu.zoomFacteur)/2);
+          diag1 = gameMath.diagonaleCarre((entite[entite1].width/entite[entite1].imageRendu.zoomFacteur)/2);
         }
-        if(image[Entite2].zoom){
-          var diag2 = gameMath.diagonaleCarre((entite[Entite1].width*entite[Entite2].imageRendu.zoomFacteur)/2);
+        if(image[entite2].zoom){
+          diag2 = gameMath.diagonaleCarre((entite[entite1].width*entite[entite2].imageRendu.zoomFacteur)/2);
         }
         else{
-          var diag2 = gameMath.diagonaleCarre((entite[Entite1].width/entite[Entite2].imageRendu.zoomFacteur)/2);
+          diag2 = gameMath.diagonaleCarre((entite[entite1].width/entite[entite2].imageRendu.zoomFacteur)/2);
         }
 
         return distance < Math.max(diag1,diag2);
 }
 
 function updateCollision() {
-  for(var key in entite) {
-    var isColliding = testCollisionEntite(gamePropriete.joueur,key);
-    if((isColliding && key != gamePropriete.joueur) && entite[key].collision){
+  for(let key in entite) {
+    let isColliding = testCollisionEntite(gamePropriete.joueur,key);
+    if((isColliding && key !== gamePropriete.joueur) && entite[key].collision){
       entite[gamePropriete].genCollision(entite[key].type)
     }
   }
