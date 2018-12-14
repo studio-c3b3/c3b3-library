@@ -45,7 +45,7 @@ document.onkeyup = function(event) {
             case "ArrowLeft":
                 entite[gamePropriete.joueur].appuyerGauche = false;
                 break;
-            case "KeyW  ":
+            case "KeyW":
             case "ArrowUp":
                 entite[gamePropriete.joueur].appuyerHaut = false;
                 break;

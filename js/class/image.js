@@ -4,7 +4,7 @@ let frameCompteur = 0;
 
 function declarerStatic(id,width,height,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille "+width+"*"+height);
-  var fixeC = {
+  let fixeC = {
     id: id,
     image: entite[id].image,
     height : height,
@@ -35,7 +35,7 @@ function declarerStatic(id,width,height,zoom,zoomFacteur) {
 
 function declarerAnimation(frameLimit,width,height,tailleAnimation,id,zoom,zoomFacteur) {
   console.log("Ajout de "+id+" avec comme taille d'animation "+tailleAnimation);
-  var animationC = {
+  let animationC = {
     id: id,
     frameLimit: frameLimit,
     image: entite[id].image,
