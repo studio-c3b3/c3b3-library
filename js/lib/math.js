@@ -23,6 +23,9 @@ var gameMath = {
     zoom : function(id){
         if(image[id].zoom) return (image[id].tailleImage*image[id].zoomFacteur)
         else return (image[id].tailleImage/image[id].zoomFacteur)
+    },
+    convertToRadian : function(degrees){
+        return degrees * Math.PI/180;
     }
 
-}
+};

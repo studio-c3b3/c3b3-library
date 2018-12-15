@@ -20,16 +20,26 @@ document.onkeydown = function(event) {
             case "ArrowDown":
                 entite[gamePropriete.joueur].appuyerBas = true;
                 break;
+            case "Escape":
+                changeEtat(gamePropriete.mainMenu);
+                break;
         }
     }
     else if (etats[gamePropriete.etat].type === 0) switch (event.code) {
         case "KeyW":
         case "ArrowUp":
-            if (0 < gamePropriete.menuCursor) gamePropriete.menuCursor -= 1;
+            if (0 < gamePropriete.menuCursor){
+                gamePropriete.menuCursor -= 1;
+                if (etats[gamePropriete.etat].sonDefilement) etats[gamePropriete.etat].sonDefilement.play();
+            }
+
             break;
         case "KeyS":
         case "ArrowDown":
-            if (menuElement.length - 1 > gamePropriete.menuCursor) gamePropriete.menuCursor += 1;
+            if (menuElement.length - 1 > gamePropriete.menuCursor){
+                gamePropriete.menuCursor += 1;
+                if (etats[gamePropriete.etat].sonDefilement) etats[gamePropriete.etat].sonDefilement.play();
+            }
             break;
         case "Enter":
             entite[menuElement[gamePropriete.menuCursor]].callback();
@@ -64,15 +74,23 @@ document.onkeyup = function(event) {
 
 updateJoueurPosition = function() {
     if (gamePropriete.joueur == null) {} else {
-        if (entite[gamePropriete.joueur].appuyerDroite)
-            entite[gamePropriete.joueur].x += entite[gamePropriete.joueur].vitesse;
-        if (entite[gamePropriete.joueur].appuyerGauche)
-            entite[gamePropriete.joueur].x -= entite[gamePropriete.joueur].vitesse;
-        if (entite[gamePropriete.joueur].appuyerBas)
-            entite[gamePropriete.joueur].y += entite[gamePropriete.joueur].vitesse;
-        if (entite[gamePropriete.joueur].appuyerHaut)
-            entite[gamePropriete.joueur].y -= entite[gamePropriete.joueur].vitesse;
-
+        if(gamePropriete.playerInput === "zqsd") {
+            if (entite[gamePropriete.joueur].appuyerDroite)
+                entite[gamePropriete.joueur].x += entite[gamePropriete.joueur].vitesse;
+            if (entite[gamePropriete.joueur].appuyerGauche)
+                entite[gamePropriete.joueur].x -= entite[gamePropriete.joueur].vitesse;
+            if (entite[gamePropriete.joueur].appuyerBas)
+                entite[gamePropriete.joueur].y += entite[gamePropriete.joueur].vitesse;
+            if (entite[gamePropriete.joueur].appuyerHaut)
+                entite[gamePropriete.joueur].y -= entite[gamePropriete.joueur].vitesse;
+        }
+        else if(gamePropriete.playerInput === "rotate"){
+            entite[gamePropriete.joueur].x += entite[gamePropriete.joueur].vitesse * Math.sin(gameMath.convertToRadian(entite[gamePropriete.joueur].angle));
+            entite[gamePropriete.joueur].y += entite[gamePropriete.joueur].vitesse * -Math.cos(gameMath.convertToRadian(entite[gamePropriete.joueur].angle));
+            if(entite[gamePropriete.joueur].appuyerDroite) entite[gamePropriete.joueur].angle += 2;
+            if(entite[gamePropriete.joueur].appuyerGauche) entite[gamePropriete.joueur].angle -= 2;
+            rotateEntity(gamePropriete.joueur,entite[gamePropriete.joueur].angle)
+        }
         //ispositionvalid
         if (entite[gamePropriete.joueur].imageRendu.zoom) {
             if (entite[gamePropriete.joueur].x < 0) {

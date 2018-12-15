@@ -29,3 +29,11 @@ function declarerMenuElement(id,x,width,height,srcImage,zoom,zoomFacteur,callbac
     entite[id].callback = () => callback();
     menuElement.push(id);
 }
+
+function ajouteProprieteMenu(id,nom,valeur){
+    if(!etats[id]) console.error("L'état n'existe pas !");
+    if(etats[id].type !== 0) console.error("L'état n'est pas un menu");
+    else {
+        etats[id][nom] = valeur;
+    }
+}
