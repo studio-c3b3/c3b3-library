@@ -89,10 +89,9 @@ updateJoueurPosition = function() {
             entite[gamePropriete.joueur].y += entite[gamePropriete.joueur].vitesse * -Math.cos(gameMath.convertToRadian(entite[gamePropriete.joueur].angle));
             if(entite[gamePropriete.joueur].appuyerDroite) entite[gamePropriete.joueur].angle += 2;
             if(entite[gamePropriete.joueur].appuyerGauche) entite[gamePropriete.joueur].angle -= 2;
-            rotateEntity(gamePropriete.joueur,entite[gamePropriete.joueur].angle)
+            rotateEntity(gamePropriete.joueur,entite[gamePropriete.joueur].angle);
         }
-        //ispositionvalid
-        if (entite[gamePropriete.joueur].imageRendu.zoom) {
+        /*if (entite[gamePropriete.joueur].imageRendu.zoom) {
             if (entite[gamePropriete.joueur].x < 0) {
                 entite[gamePropriete.joueur].x = 0;
             }
@@ -118,7 +117,7 @@ updateJoueurPosition = function() {
             if (entite[gamePropriete.joueur].y > HEIGHT - entite[gamePropriete.joueur].height / entite[gamePropriete.joueur].imageRendu.zoomFacteur) {
                 entite[gamePropriete.joueur].y = HEIGHT - entite[gamePropriete.joueur].height / entite[gamePropriete.joueur].imageRendu.zoomFacteur;
             }
-        }
+        }*/
     }
 
 

@@ -16,6 +16,7 @@ function declarerEntite(id,x,y,vitesse,srcImage,width,height,type) {
         width: width,
         height: height,
         rendu: false,
+        angle: 0,
         imageRendu: {},
         genCollision: function (type) {
           console.log("Collision !");

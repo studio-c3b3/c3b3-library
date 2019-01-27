@@ -23,8 +23,8 @@ function declarerStatic(id,width,height,zoom,zoomFacteur) {
       }
       ctx.closePath();
 
-      }
-    };
+    }
+  };
   if(typeof zoom && zoomFacteur === undefined) {
       fixeC.zoom = true;
       fixeC.zoomFacteur = 1;

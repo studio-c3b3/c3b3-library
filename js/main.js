@@ -57,7 +57,7 @@ declarerEtat(1, 1,
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         updateMaps();
         updateJoueurPosition();
-        drawImage();});
+        if(gamePropriete.playerInput !== "rotate") drawImage();});
 
 declarerAudio(0, "./assets/song/defilement.ogg");
 declarerAudio(1, "./assets/song/clic.ogg");
@@ -66,8 +66,20 @@ declarerMenuCursor(3, 22, 21, "assets/img/menu/arrowBlue_right.png", 1, 1);
 declarerMenuElement(1, 0, 96, 40, "assets/img/menu/play.png", 1, 1, () => {changeEtat(1); audio[1].play()});
 declarerMenuElement(2, 180, 96, 40, "assets/img/menu/play.png", 1, 1, () => {console.log("test 1"); audio[1].play();});
 declarerMap(0, "assets/maps/map1.json");
-declarerEntite(0, 0, 0, 10, "assets/img/bateauPirates.png", 128, 128, 0);
-declarerAnimation(20,256,256,128,0,0,1);
+declarerEntite(0, 0, 0, 10, "assets/img/bateau_hero.png", 146, 146, 0);
+declarerStatic(0, 146,146,1,1);
 setInterval(update, 10);
 ajouteProprieteMenu(0, "sonDefilement",audio[0]);
 changeEtat(0);
+
+if(gamePropriete.playerInput === "rotate") entite[gamePropriete.player].image.gen = function() {
+    ctx.beginPath();
+    if(entite[gamePropriete.player].image.zoom){
+        ctx.drawImage(entite[gamePropriete.player].image.image, 0, 0, entite[gamePropriete.player].image.width, entite[gamePropriete.player].image.height, entite[id].x, entite[id].y, -(entite[gamePropriete.player].image.width*entite[gamePropriete.player].image.zoomFacteur), -(entite[gamePropriete.player].image.height*entite[gamePropriete.player].image.zoomFacteur));
+    }
+    else{
+        ctx.drawImage(entite[gamePropriete.player].image.image, 0, 0, entite[gamePropriete.player].image.width, entite[gamePropriete.player].image.height, entite[id].x, entite[id].y, -(entite[gamePropriete.player].image.width/entite[gamePropriete.player].image.zoomFacteur), -(entite[gamePropriete.player].image.height/entite[gamePropriete.player].image.zoomFacteur));
+    }
+    ctx.closePath();
+
+};
