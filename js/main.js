@@ -61,6 +61,7 @@ declarerMenuElement(1, 0, 96, 40, "assets/img/menu/play.png", 1, 1, () => {chang
 declarerMenuElement(2, 180, 96, 40, "assets/img/menu/play.png", 1, 1, () => {console.log("test 1"); audio[1].play();});
 declarerMap(0, "assets/maps/map1.json");
 declarerEntite(0, 0, 73, 0, "assets/img/bateau_hero.png", 146, 146, 0);
+//declarerEntite(1, 0, 0, 0, "assets/img/bateau_hero.png", 146, 146, 0);
 declarerStatic(0, 146,146,1,1);
 ajouteProprieteMenu(0, "sonDefilement",audio[0]);
 changeEtat(1);

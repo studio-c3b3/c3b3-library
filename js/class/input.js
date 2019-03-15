@@ -86,11 +86,11 @@ updateJoueurPosition = function() {
         }
         else if(gamePropriete.playerInput === "rotate"){
             entite[gamePropriete.joueur].x += entite[gamePropriete.joueur].vitesse * Math.sin(gameMath.convertToRadian(entite[gamePropriete.joueur].angle));
-            entite[gamePropriete.joueur].y -= entite[gamePropriete.joueur].vitesse * -Math.cos(gameMath.convertToRadian(entite[gamePropriete.joueur].angle));
-            if(entite[gamePropriete.joueur].appuyerHaut === true) entite[gamePropriete.joueur].vitesse += 1;
+            entite[gamePropriete.joueur].y += entite[gamePropriete.joueur].vitesse * -Math.cos(gameMath.convertToRadian(entite[gamePropriete.joueur].angle));
+            if(entite[gamePropriete.joueur].appuyerHaut === true) entite[gamePropriete.joueur].vitesse -= 1;
             if(entite[gamePropriete.joueur].appuyerBas === true) entite[gamePropriete.joueur].vitesse = 0;
-            if(entite[gamePropriete.joueur].appuyerDroite === true) entite[gamePropriete.joueur].angle -= 2;
-            if(entite[gamePropriete.joueur].appuyerGauche === true) entite[gamePropriete.joueur].angle += 2;
+            if(entite[gamePropriete.joueur].appuyerDroite === true) entite[gamePropriete.joueur].angle += 2;
+            if(entite[gamePropriete.joueur].appuyerGauche === true) entite[gamePropriete.joueur].angle -= 2;
         }
         if (entite[gamePropriete.joueur].imageRendu.zoom) {
             if (entite[gamePropriete.joueur].x < 0) {
