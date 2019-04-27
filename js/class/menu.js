@@ -30,15 +30,11 @@ function declarerMenuElement(id,x,width,height,srcImage,zoom,zoomFacteur,callbac
     menuElement.push(id);
 }
 
-function declarerMenuElement(id,x,width,height,srcImage,zoom,zoomFacteur,callback) {
-    declarerEntite(id, WIDTH/2-width/2, x, 0, srcImage, width, height, 2);
-    declarerStatic(id, width, height, zoom, zoomFacteur);
-    entite[id].imageRendu.active = false;
-    entite[id].imageRendu.cursor = false;
-    entite[id].callback = () => callback();
-    menuElement.push(id);
-}
+function declarerMenuLogo(id,x,width,height,srcImage,zoom,zoomFacteur,callback) {
+  declarerEntite(id, WIDTH/2-width/2, x, 0, srcImage, width, height, 2);
+  declarerStatic(id, width, height, zoom, zoomFacteur);
 
+}
 
 function ajouteProprieteMenu(id,nom,valeur){
     if(!etats[id]) console.error("L'état n'existe pas !");
