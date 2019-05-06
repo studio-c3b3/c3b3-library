@@ -30,7 +30,7 @@ function declarerMenuElement(id,x,width,height,srcImage,zoom,zoomFacteur,callbac
     menuElement.push(id);
 }
 
-function declarerMenuLogo(id,x,width,height,srcImage,zoom,zoomFacteur,callback) {
+function declarerMenuLogo(id,x,width,height,srcImage,zoom,zoomFacteur) {
   declarerEntite(id, WIDTH/2-width/2, x, 0, srcImage, width, height, 2);
   declarerStatic(id, width, height, zoom, zoomFacteur);
 
